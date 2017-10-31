@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Морзе Шифратор-Дешифратор</string>
+
+    <string name="tab_main">Меню</string>
+    <string name="hint_text">Введите текст</string>
+    <string name="hint_code">Получите код\n(только тире(-), точка(.)\nи звездочка(*) разрешены)</string>
+    <string name="btn_trns">Перевести</string>
+    <string name="cur_lang">Текущий язык ввода:</string>
+    <string name="l_mode">Выберите режим:</string>
+    <string name="r_btn_encode">Шифрование</string>
+    <string name="r_btn_decode">Дешивровка</string>
+
+    <string name="tab_settings">Настройки</string>
+    <string name="input_lang">Выберите язык для ввода:</string>
+    <string name="l_eng">Английский</string>
+    <string name="l_rus">Русский</string>
+    <string name="l_germ">Немецкий</string>
+
+    <string name="tab_rules">Правила</string>
+    <string name="text_rules">Выберите язык:</string>
+
+    <string name="text_back">Назад</string>
+
+    <string name="mess_encode">Неправильный ввод или переключите язык</string>
+    <string name="mess_decode">Неправильный ввод</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-8202213558316777/3555960045</string>
+    <string name="banner_ad_unit_id_1">ca-app-pub-8202213558316777/2718355243</string>
+
+    <!-- My AdMob banner ID -->
+    <!-- ca-app-pub-8202213558316777/3555960045 -->
+    <!-- ca-app-pub-8202213558316777/2718355243 -->
+
+    <!-- Test AdMob banner ID (from Firebase tutorial) -->
+    <!-- ca-app-pub-3940256099942544/6300978111 -->
+</resources>

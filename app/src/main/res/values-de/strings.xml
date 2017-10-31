@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Morse Encoder-Decoder</string>
+
+    <string name="tab_main">Main</string>
+    <string name="hint_text">Text eingeben</string>
+    <string name="hint_code">Bekommen Sie einen Code\n(nur schlag(-), punkt(.)\nund sternchen(*) dürfen)</string>
+    <string name="btn_trns">Übersetzen</string>
+    <string name="cur_lang">Aktuelle Eingabesprache:</string>
+    <string name="l_mode">Wählen Sie den Modus:</string>
+    <string name="r_btn_encode">Codieren</string>
+    <string name="r_btn_decode">Decodieren</string>
+
+    <string name="tab_settings">Einstellungen</string>
+    <string name="input_lang">Wählen Sie die Sprache für Texteingabe aus:</string>
+    <string name="l_eng">Englisch</string>
+    <string name="l_rus">Russisch</string>
+    <string name="l_germ">Deutsch</string>
+
+    <string name="tab_rules">Regeln</string>
+    <string name="text_rules">Übersetzungsregeln:</string>
+
+    <string name="text_back">Zurück</string>
+
+    <string name="mess_encode">Falsche Eingabedaten oder Umschaltsprache</string>
+    <string name="mess_decode">Falsche Eingabedaten</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-8202213558316777/3555960045</string>
+    <string name="banner_ad_unit_id_1">ca-app-pub-8202213558316777/2718355243</string>
+
+    <!-- My AdMob banner ID -->
+    <!-- ca-app-pub-8202213558316777/3555960045 -->
+    <!-- ca-app-pub-8202213558316777/2718355243 -->
+
+    <!-- Test AdMob banner ID (from Firebase tutorial) -->
+    <!-- ca-app-pub-3940256099942544/6300978111 -->
+
+</resources>

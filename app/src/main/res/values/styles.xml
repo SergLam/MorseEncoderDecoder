@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="MyTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+
+        <item name="android:actionBarTabTextStyle">@style/Theme.Client.ActionBarTabBar</item>
+    </style>
+
+    <style name="Theme.Client.ActionBarTabBar" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+
+    </style>
+
+</resources>

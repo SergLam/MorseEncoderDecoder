@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rules"
+    android:tag="rules"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimary">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text_rules"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/tr_btn_eng"
+        android:layout_below="@+id/textView"
+        android:layout_margin="2dp"
+        android:background="@drawable/eng_flag"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/tr_btn_rus"
+        android:layout_below="@+id/tr_btn_eng"
+        android:layout_margin="2dp"
+        android:background="@drawable/rus_flag"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/tr_btn_germ"
+        android:layout_below="@+id/tr_btn_rus"
+        android:layout_margin="2dp"
+        android:background="@drawable/german_flag"/>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id_1">
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "395651861299",
+    "firebase_url": "https://morseencoder.firebaseio.com",
+    "project_id": "morseencoder",
+    "storage_bucket": "morseencoder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395651861299:android:ec1a9e6cd5088289",
+        "android_client_info": {
+          "package_name": "com.samurai.morseencoder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395651861299-rnb7chvfovo7o0582vav86a6s8ou822c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samurai.morseencoder",
+            "certificate_hash": "28b7e825bd3e6fa56e3bbab13263739342ee78d1"
+          }
+        },
+        {
+          "client_id": "395651861299-9tjtd1d7vpcpgdglscet3r6eoitoqu0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs6Phx2269uNaf8Ta6Er9XDXsnU81CufU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395651861299-9tjtd1d7vpcpgdglscet3r6eoitoqu0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

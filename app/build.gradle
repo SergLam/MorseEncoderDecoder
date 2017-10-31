@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        setProperty("archivesBaseName", "Morse Encoder")
+        applicationId "com.samurai.morseencoder"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 2
+        versionName "1.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.google.firebase:firebase-ads:10.2.0'
+    testCompile 'junit:junit:4.12'
+}
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="app_name">Morse Encoder-Decoder</string>
+
+    <string name="tab_main">Main</string>
+    <string name="hint_text">Enter text</string>
+    <string name="hint_code">Get a code\n(only dash(-), dot(.)\nand asterisk(*) allowed)</string>
+    <string name="btn_trns">Translate</string>
+    <string name="cur_lang">Current input language:</string>
+    <string name="l_mode">Choose mode:</string>
+    <string name="r_btn_encode">Encoding</string>
+    <string name="r_btn_decode">Decoding</string>
+
+    <string name="tab_settings">Settings</string>
+    <string name="input_lang">Select language for text input:</string>
+    <string name="l_eng">English</string>
+    <string name="l_rus">Russian</string>
+    <string name="l_germ">German</string>
+
+    <string name="tab_rules">Rules</string>
+    <string name="text_rules">Select language:</string>
+
+    <string name="text_back">Back</string>
+
+    <string name="mess_encode">Wrong input data or switch language</string>
+    <string name="mess_decode">Wrong input data</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-8202213558316777/3555960045</string>
+    <string name="banner_ad_unit_id_1">ca-app-pub-8202213558316777/2718355243</string>
+
+    <!-- My AdMob banner ID -->
+    <!-- ca-app-pub-8202213558316777/3555960045 -->
+    <!-- ca-app-pub-8202213558316777/2718355243 -->
+
+    <!-- Test AdMob banner ID (from Firebase tutorial) -->
+    <!-- ca-app-pub-3940256099942544/6300978111 -->
+</resources>
