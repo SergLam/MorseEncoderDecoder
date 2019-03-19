@@ -11,9 +11,6 @@ import android.app.FragmentTransaction;
 
 import android.support.v4.view.ViewPager;
 
-import com.google.android.gms.ads.MobileAds;
-
-
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity implements TabListener {
     private ViewPager viewPager;

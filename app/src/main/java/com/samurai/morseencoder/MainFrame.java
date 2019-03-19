@@ -1,7 +1,5 @@
 package com.samurai.morseencoder;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;

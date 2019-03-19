@@ -26,14 +26,4 @@
     <string name="mess_encode">Falsche Eingabedaten oder Umschaltsprache</string>
     <string name="mess_decode">Falsche Eingabedaten</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-8202213558316777/3555960045</string>
-    <string name="banner_ad_unit_id_1">ca-app-pub-8202213558316777/2718355243</string>
-
-    <!-- My AdMob banner ID -->
-    <!-- ca-app-pub-8202213558316777/3555960045 -->
-    <!-- ca-app-pub-8202213558316777/2718355243 -->
-
-    <!-- Test AdMob banner ID (from Firebase tutorial) -->
-    <!-- ca-app-pub-3940256099942544/6300978111 -->
-
 </resources>
