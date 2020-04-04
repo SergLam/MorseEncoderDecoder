@@ -1,9 +1,11 @@
-package com.samurai.morseencoder;
+package com.samurai.morseencoder.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.samurai.morseencoder.R;
 
 /**
  * Created by Sergey on 13.01.2017.

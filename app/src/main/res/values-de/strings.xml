@@ -3,6 +3,12 @@
 
     <string name="app_name">Morse Encoder-Decoder</string>
 
+    <string-array name="tab_names">
+        <item>Main</item>
+        <item>Einstellungen</item>
+        <item>Regeln</item>
+    </string-array>
+
     <string name="tab_main">Main</string>
     <string name="hint_text">Text eingeben</string>
     <string name="hint_code">Bekommen Sie einen Code\n(nur schlag(-), punkt(.)\nund sternchen(*) dürfen)</string>

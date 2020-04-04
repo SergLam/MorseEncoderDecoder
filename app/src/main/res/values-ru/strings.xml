@@ -3,6 +3,12 @@
 
     <string name="app_name">Морзе Шифратор-Дешифратор</string>
 
+    <string-array name="tab_names">
+        <item>Меню</item>
+        <item>Настройки</item>
+        <item>Правила</item>
+    </string-array>
+
     <string name="tab_main">Меню</string>
     <string name="hint_text">Введите текст</string>
     <string name="hint_code">Получите код\n(только тире(-), точка(.)\nи звездочка(*) разрешены)</string>

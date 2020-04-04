@@ -2,6 +2,12 @@
 
     <string name="app_name">Morse Encoder-Decoder</string>
 
+    <string-array name="tab_names">
+        <item>Main</item>
+        <item>Settings</item>
+        <item>Rules</item>
+    </string-array>
+
     <string name="tab_main">Main</string>
     <string name="hint_text">Enter text</string>
     <string name="hint_code">Get a code\n(only dash(-), dot(.)\nand asterisk(*) allowed)</string>

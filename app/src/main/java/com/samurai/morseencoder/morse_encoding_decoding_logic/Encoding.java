@@ -1,4 +1,4 @@
-package com.samurai.morseencoder;
+package com.samurai.morseencoder.morse_encoding_decoding_logic;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
 public class Encoding {
 
     public Encoding(){}
-    boolean trans_complited = false;
+    public boolean trans_complited = false;
 
-    public String[] alpha_eng = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    private String[] alpha_eng = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
             "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+",  };
-    public String[] dottie_eng = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
+    private String[] dottie_eng = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
             ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".-*-*.",
             "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
             "-*.*-*-", "-*-*.*.", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-", ".*.*.*.*-", ".*.*.*.*.",
@@ -25,12 +25,12 @@ public class Encoding {
             "-*.*-*.*-*.", "-*.*.*-*.  ", ".*.*-*-*.*-", "-*-*-*.*.", "-*.*.*.*-", ".*-*-*.*-*.",
             ".*-*.*-*."};
 
-    public String[] alpha_germ = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    private String[] alpha_germ = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
             "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+", "ä", "ö", "ü", "ß"};
-    public String[] dottie_germ = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
+    private String[] dottie_germ = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
             ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".*-*-*.",
             "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
             "-*.*-*-", "-*-*.*.", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-", ".*.*.*.*-", ".*.*.*.*.",
@@ -40,13 +40,13 @@ public class Encoding {
             ".*-*-*.*-*.", ".*-*.*-*.", ".*-*.*-", "-*-*-*.", ".*.*-*-", ".*.*.*-*-*.*."};
 
 
-    public String[] alpha_rus = { "а", "б", "в", "г", "д", "е", "ж", "з",
+    private String[] alpha_rus = { "а", "б", "в", "г", "д", "е", "ж", "з",
             "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т",
             "у", "ф", "х", "ц", "ш", "щ", "э", "ю", "я", "ь", "ы",
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "'",
             ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+",  };
-    public String[] dottie_rus = { ".*-", "-*.*.*.", ".*-*-", "-*-*.", "-*.*.", ".", ".*.*.*-",
+    private String[] dottie_rus = { ".*-", "-*.*.*.", ".*-*-", "-*-*.", "-*.*.", ".", ".*.*.*-",
             "-*-*.*.", ".*.", ".*-*-*-", "-*.*-*.", ".*-*.*.", "-*-", "-*.", "-*-*-", ".*-*-*.",
             ".*-*.", ".*.*.", "-", ".*.*-", ".*.*-*.", ".*.*.*.", "-*.*-*.", "-*-*-*-", "-*-*.*-",
             ".*.*-*.*.", ".*.*-*-", ".*-*.*-", "-*.*.*-", "-*.*-", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-",
@@ -81,7 +81,7 @@ public class Encoding {
 
     }
 
-    public boolean isRussian(String text){
+    private boolean isRussian(String text){
         boolean result = false;
 
         Pattern pattern = Pattern.compile(
@@ -99,7 +99,7 @@ public class Encoding {
         return result;
     }
 
-    public boolean isGerman(String text){
+    private boolean isGerman(String text){
         boolean result = false;
 
         Pattern pattern = Pattern.compile(
@@ -117,7 +117,7 @@ public class Encoding {
         return result;
     }
 
-    public boolean isEnglish(String text){
+    private boolean isEnglish(String text){
         boolean result = false;
 
         Pattern pattern = Pattern.compile(
@@ -136,7 +136,7 @@ public class Encoding {
     }
 
 
-    public String eng_to_morse(char [] translates){
+    private String eng_to_morse(char [] translates){
         String morse = "";
 
         for (int j = 0; j < translates.length; j++){
@@ -162,7 +162,7 @@ public class Encoding {
         return morse;
     }
 
-    public String germ_to_morse(char [] translates){
+    private String germ_to_morse(char [] translates){
         String morse = "";
 
         for (int j = 0; j < translates.length; j++){
@@ -188,7 +188,7 @@ public class Encoding {
         return morse;
     }
 
-    public String rus_to_morse(char [] translates){
+    private String rus_to_morse(char [] translates){
         String morse = "";
 
         for (int j = 0; j < translates.length; j++){

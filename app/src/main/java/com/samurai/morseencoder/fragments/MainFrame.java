@@ -1,4 +1,4 @@
-package com.samurai.morseencoder;
+package com.samurai.morseencoder.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,6 +15,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.samurai.morseencoder.morse_encoding_decoding_logic.Decoding;
+import com.samurai.morseencoder.morse_encoding_decoding_logic.Encoding;
+import com.samurai.morseencoder.R;
+
 /**
  * Created by Sergey on 24.01.2017.
  */
@@ -30,7 +34,7 @@ public class MainFrame extends Fragment{
                                  Bundle savedInstanceState) {
             View view=inflater.inflate(R.layout.main_frame, container, false);
             // Set filter to morse text field
-            EditText morse = (EditText)view.findViewById(R.id.morse_text);
+            EditText morse = view.findViewById(R.id.morse_text);
             InputFilter filter = new InputFilter() {
                 public CharSequence filter(CharSequence source, int start, int end,
                                            Spanned dest, int dstart, int dend) {
@@ -63,14 +67,14 @@ public class MainFrame extends Fragment{
                 }
             });
             // Connect translation function to translate button
-            Button button = (Button) view.findViewById(R.id.trans_btn);
+            Button button = view.findViewById(R.id.trans_btn);
             button.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    EditText text = (EditText) getView().findViewById(R.id.eng_text);
-                    EditText code = (EditText) getView().findViewById(R.id.morse_text);
+                    EditText text = getView().findViewById(R.id.eng_text);
+                    EditText code = getView().findViewById(R.id.morse_text);
                     preferences = getContext().getSharedPreferences("flag", Context.MODE_PRIVATE);
                     String mode = preferences.getString("mode","");
                     String lang = preferences.getString("lang","");
@@ -78,14 +82,14 @@ public class MainFrame extends Fragment{
                     String message_morse = code.getText().toString();
                     if(mode.equals("encode")){
                         String result = obj_encode.translate_to_code(message, lang);
-                        if(obj_encode.trans_complited==true){
+                        if(obj_encode.trans_complited){
                             code.setText(result);
                         } else Toast.makeText(getActivity(), getResources().getString(R.string.mess_encode), Toast.LENGTH_SHORT).show();
 
                     }
                     if(mode.equals("decode")){
                         String result = obj_decode.code_to_text(message_morse, lang);
-                        if(obj_decode.trans_complited==true){
+                        if(obj_decode.trans_complited){
                             text.setText(result);
                         } else Toast.makeText(getActivity(), getResources().getString(R.string.mess_decode), Toast.LENGTH_SHORT).show();
                     }
@@ -106,7 +110,7 @@ public class MainFrame extends Fragment{
         }
 
     public View set_flag(View view) {
-        Button btn_flag = (Button)view.findViewById(R.id.btn_flag);
+        Button btn_flag = view.findViewById(R.id.btn_flag);
         preferences = getContext().getSharedPreferences("flag", Context.MODE_PRIVATE);
         String lang = preferences.getString("lang","");
         if(lang.equals("english")){
@@ -132,9 +136,9 @@ public class MainFrame extends Fragment{
     }
 
     public void get_mode(View v){
-        RadioGroup radio = (RadioGroup)v.findViewById(R.id.radio_mode);
+        RadioGroup radio = v.findViewById(R.id.radio_mode);
         int radioButtonID = radio.getCheckedRadioButtonId();
-        RadioButton radioBut = (RadioButton)v.findViewById(radioButtonID);
+        RadioButton radioBut = v.findViewById(radioButtonID);
         String mode = (String) radioBut.getTag();
         MainFrame.preferences = getContext().getSharedPreferences("flag", Context.MODE_PRIVATE);
         MainFrame.editor = MainFrame.preferences.edit();

@@ -1,12 +1,4 @@
-package com.samurai.morseencoder;
-
-import org.w3c.dom.DOMStringList;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+package com.samurai.morseencoder.morse_encoding_decoding_logic;
 
 /**
  * Created by Sergey on 10.02.2017.
@@ -14,14 +6,14 @@ import java.util.regex.Pattern;
 public class Decoding {
 
     public Decoding(){}
-    boolean trans_complited = true;
+    public boolean trans_complited = true;
 
-    public String[] alpha_eng = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    private String[] alpha_eng = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
             "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+",  ""};
-    public String[] dottie_eng = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
+    private String[] dottie_eng = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
             ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".-*-*.",
             "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
             "-*.*-*-", "-*-*.*.", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-", ".*.*.*.*-", ".*.*.*.*.",
@@ -30,12 +22,12 @@ public class Decoding {
             "-*.*-*.*-*.", "-*.*.*-*.  ", ".*.*-*-*.*-", "-*-*-*.*.", "-*.*.*.*-", ".*-*-*.*-*.",
             ".*-*.*-*.",""};
 
-    public String[] alpha_germ = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    private String[] alpha_germ = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
             "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+", "ä", "ö", "ü", "ß",""};
-    public String[] dottie_germ = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
+    private String[] dottie_germ = { ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
             ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".*-*-*.",
             "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
             "-*.*-*-", "-*-*.*.", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-", ".*.*.*.*-", ".*.*.*.*.",
@@ -45,13 +37,13 @@ public class Decoding {
             ".*-*-*.*-*.", ".*-*.*-*.", ".*-*.*-", "-*-*-*.", ".*.*-*-", ".*.*.*-*-*.*.",""};
 
 
-    public String[] alpha_rus = { "а", "б", "в", "г", "д", "е", "ж", "з",
+    private String[] alpha_rus = { "а", "б", "в", "г", "д", "е", "ж", "з",
             "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т",
             "у", "ф", "х", "ц", "ш", "щ", "э", "ю", "я", "ь", "ы",
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "'",
             ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
             "=", "@", "+", "" };
-    public String[] dottie_rus = { ".*-", "-*.*.*.", ".*-*-", "-*-*.", "-*.*.", ".", ".*.*.*-",
+    private String[] dottie_rus = { ".*-", "-*.*.*.", ".*-*-", "-*-*.", "-*.*.", ".", ".*.*.*-",
             "-*-*.*.", ".*.", ".*-*-*-", "-*.*-*.", ".*-*.*.", "-*-", "-*.", "-*-*-", ".*-*-*.",
             ".*-*.", ".*.*.", "-", ".*.*-", ".*.*-*.", ".*.*.*.", "-*.*-*.", "-*-*-*-", "-*-*.*-",
             ".*.*-*.*.", ".*.*-*-", ".*-*.*-", "-*.*.*-", "-*.*-", ".*-*-*-*-", ".*.*-*-*-", ".*.*.*-*-",
@@ -81,7 +73,7 @@ public class Decoding {
 
     }
 
-    public String morse_to_eng(String code){
+    private String morse_to_eng(String code){
         String result = "";
         boolean is_match = false;
         code=code.replaceAll("\\*\\*\\*\\*\\*\\*\\*",", ,");
@@ -102,7 +94,7 @@ public class Decoding {
         return result;
     }
 
-    public String morse_to_germ(String code){
+    private String morse_to_germ(String code){
         String result = "";
         boolean is_match = false;
         code=code.replaceAll("\\*\\*\\*\\*\\*\\*\\*",", ,");
@@ -123,7 +115,7 @@ public class Decoding {
         return result;
     }
 
-    public String morse_to_rus(String code){
+    private String morse_to_rus(String code){
         String result = "";
         boolean is_match = false;
         code=code.replaceAll("\\*\\*\\*\\*\\*\\*\\*",", ,");

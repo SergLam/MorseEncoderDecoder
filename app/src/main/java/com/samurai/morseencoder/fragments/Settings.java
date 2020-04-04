@@ -1,6 +1,4 @@
-package com.samurai.morseencoder;
-
-/**
+package com.samurai.morseencoder.fragments; /**
  * Created by Sergey on 24.01.2017.
  */
 import android.content.Context;
@@ -11,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.samurai.morseencoder.R;
 
 public class Settings extends Fragment{
 
@@ -27,9 +27,9 @@ public class Settings extends Fragment{
         MainFrame.preferences = getContext().getSharedPreferences("flag", Context.MODE_PRIVATE);
         MainFrame.editor = MainFrame.preferences.edit();
 
-        RadioGroup radio = (RadioGroup)view.findViewById(R.id.radioGroup);
+        RadioGroup radio = view.findViewById(R.id.radioGroup);
         int radioButtonID = radio.getCheckedRadioButtonId();
-        RadioButton radioBut = (RadioButton)view.findViewById(radioButtonID);
+        RadioButton radioBut = view.findViewById(radioButtonID);
         String lang = (String) radioBut.getTag();
 
         MainFrame.editor.putString("lang", lang);
