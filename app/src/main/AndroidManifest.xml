@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.samurai.morseencoder">
-    <uses-permission android:name="android.permission.INTERNET" />
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
-        <activity android:name=".activities.MainActivity"
+        <activity android:name="com.samurai.morseencoder.activities.MainActivity"
+            android:exported="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -21,29 +25,25 @@
         </activity>
 
         <activity
-            android:name=".activities.Translation_Eng"
-            android:label="@string/app_name"
+            android:name="com.samurai.morseencoder.activities.TranslationEnglishActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
         <activity
-            android:name=".activities.Translation_Rus"
-            android:label="@string/app_name"
+            android:name="com.samurai.morseencoder.activities.TranslationRussianActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
         <activity
-            android:name=".activities.Translation_Germ"
-            android:label="@string/app_name"
+            android:name="com.samurai.morseencoder.activities.TranslationGermanActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
-
 
     </application>
 
