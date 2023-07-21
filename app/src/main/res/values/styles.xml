@@ -1,15 +1,38 @@
 <resources>
 
-    <style name="MyTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+    <!-- AppCompat application theme. -->
+    <style name="ActionBarAppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/status_bar_background</item>
+    </style>
 
+    <style name="MyTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarTabTextStyle">@style/Theme.Client.ActionBarTabBar</item>
     </style>
 
     <style name="Theme.Client.ActionBarTabBar" parent="@android:style/Theme.Holo.Light.DarkActionBar">
-
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">#FFFFFF</item>
-
     </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="TheoryTitleTextStyle" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">@dimen/translation_rules_title_text_size</item>
+    </style>
+
+    <style name="TheoryTextStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/translation_rules_text_size</item>
+    </style>
+
+    <style name="ActionButtonStyle"
+        parent="@style/Widget.MaterialComponents.Button"/>
 
 </resources>

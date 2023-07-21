@@ -25,24 +25,10 @@
         </activity>
 
         <activity
-            android:name="com.samurai.morseencoder.activities.TranslationEnglishActivity"
+            android:name="com.samurai.morseencoder.activities.TranslationRulesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="fullSensor"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
-
-        <activity
-            android:name="com.samurai.morseencoder.activities.TranslationRussianActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
-
-        <activity
-            android:name="com.samurai.morseencoder.activities.TranslationGermanActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@style/ActionBarAppTheme">
         </activity>
 
     </application>

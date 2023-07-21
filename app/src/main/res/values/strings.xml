@@ -31,4 +31,174 @@
     <string name="mess_encode">Wrong input data or switch language</string>
     <string name="mess_decode">Wrong input data</string>
 
+    <!-- Translation rules English activity -->
+    <string name="translation_english_rules_nav_bar_title">Translation Rules English</string>
+    <string name="translation_title">International Morse Code</string>
+    <string name="translation_dash_equal_dots">• 1 dash = 3 dots.</string>
+    <string name="translation_space">• The space between parts of the same letter = 1 dot. (1 asterisk)</string>
+    <string name="translation_space_letters">• The space between letters = 3 dots. (3 asterisk)</string>
+    <string name="translation_space_words">• The space between words = 7 dots. (7 asterisk)</string>
+
+    <string-array name="translation_english_alphabet">
+        <item>A <b>•—</b></item>
+        <item>B <b>—•••</b></item>
+        <item>C <b>—•••</b></item>
+        <item>D <b>—••</b></item>
+        <item>E <b>•</b></item>
+        <item>F <b>••—•</b></item>
+        <item>G <b>— —•</b></item>
+        <item>H <b>••••</b></item>
+        <item>I <b>••</b></item>
+        <item>J <b>•— — —</b></item>
+        <item>K <b>—•—</b></item>
+        <item>L <b>•—••</b></item>
+        <item>M <b>— —</b></item>
+        <item>N <b>—•</b></item>
+        <item>O <b>— — —</b></item>
+        <item>P <b>•— —•</b></item>
+        <item>Q <b>— —•—</b></item>
+        <item>R <b>•—•</b></item>
+        <item>S <b>•••</b></item>
+        <item>T <b>—</b></item>
+        <item>U <b>••—</b></item>
+        <item>V <b>•••—</b></item>
+        <item>W <b>•••—</b></item>
+        <item>X <b>—••—</b></item>
+        <item>Y <b>—•— —</b></item>
+        <item>Z <b>— —••</b></item>
+        <item>. <b>•—•—•—</b></item>
+        <item>, <b>— —••— —</b></item>
+        <item>: <b>— — —•••</b></item>
+        <item>; <b>—•—•—•</b></item>
+        <item>" <b>•—•—•</b></item>
+        <item>` <b>•— — — —•</b></item>
+        <item>[? <b>••— —••]</b></item>
+        <item>[! <b>— —••— —]</b></item>
+        <item>[/ <b>—••—•]</b></item>
+        <item>[@ <b>•— —•—•]</b></item>
+        <item>1 <b>•— — — —</b></item>
+        <item>2 <b>••— — —</b></item>
+        <item>3 <b>•••— —</b></item>
+        <item>4 <b>••••—</b></item>
+        <item>5 <b>•••••</b></item>
+        <item>6 <b>—••••</b></item>
+        <item>7 <b>— —•••</b></item>
+        <item>8 <b>— — —••</b></item>
+        <item>9 <b>— — — —•</b></item>
+        <item>0 <b>— — — — —</b></item>
+        <item>= <b>—•••—</b></item>
+        <item>+ <b>•—•—•</b></item>
+    </string-array>
+
+    <string-array name="translation_german_alphabet">
+        <item>A <b>•—</b></item>
+        <item>B <b>—•••</b></item>
+        <item>C <b>—•••</b></item>
+        <item>D <b>—••</b></item>
+        <item>E <b>•</b></item>
+        <item>F <b>••—•</b></item>
+        <item>G <b>— —•</b></item>
+        <item>H <b>••••</b></item>
+        <item>I <b>••</b></item>
+        <item>J <b>•— — —</b></item>
+        <item>K <b>—•—</b></item>
+        <item>L <b>•—••</b></item>
+        <item>M <b>— —</b></item>
+        <item>N <b>—•</b></item>
+        <item>O <b>— — —</b></item>
+        <item>P <b>•— —•</b></item>
+        <item>Q <b>— —•—</b></item>
+        <item>R <b>•—•</b></item>
+        <item>S <b>•••</b></item>
+        <item>T <b>—</b></item>
+        <item>U <b>••—</b></item>
+        <item>V <b>•••—</b></item>
+        <item>W <b>•••—</b></item>
+        <item>X <b>—••—</b></item>
+        <item>Y <b>—•— —</b></item>
+        <item>Z <b>— —••</b></item>
+        <item>Ä <b>•—•—</b></item>
+        <item>Ö <b>— — —•</b></item>
+        <item>Ü <b>••— —</b></item>
+        <item>ẞ <b>•••— —••</b></item>
+        <item>. <b>•—•—•—</b></item>
+        <item>, <b>— —••— —</b></item>
+        <item>: <b>— — —•••</b></item>
+        <item>; <b>—•—•—•</b></item>
+        <item>" <b>•—•—•</b></item>
+        <item>` <b>•— — — —•</b></item>
+        <item>[? <b>••— —••]</b></item>
+        <item>[! <b>— —••— —]</b></item>
+        <item>[/ <b>—••—•]</b></item>
+        <item>[@ <b>•— —•—•]</b></item>
+        <item>1 <b>•— — — —</b></item>
+        <item>2 <b>••— — —</b></item>
+        <item>3 <b>•••— —</b></item>
+        <item>4 <b>••••—</b></item>
+        <item>5 <b>•••••</b></item>
+        <item>6 <b>—••••</b></item>
+        <item>7 <b>— —•••</b></item>
+        <item>8 <b>— — —••</b></item>
+        <item>9 <b>— — — —•</b></item>
+        <item>0 <b>— — — — —</b></item>
+        <item>= <b>—•••—</b></item>
+        <item>+ <b>•—•—•</b></item>
+    </string-array>
+
+    <string-array name="translation_russian_alphabet">
+        <item>A <b>•—</b></item>
+        <item>Б <b>—•••</b></item>
+        <item>В <b>•— —</b></item>
+        <item>Г <b>— —•</b></item>
+        <item>Д <b>—••</b></item>
+        <item>Е <b>•</b></item>
+        <item>Ж <b>•••—</b></item>
+        <item>З <b>— —••</b></item>
+        <item>И <b>••</b></item>
+        <item>К <b>—•—•</b></item>
+        <item>Л <b>•—••</b></item>
+        <item>М <b>— —</b></item>
+        <item>Н <b>—•</b></item>
+        <item>О <b>— — —</b></item>
+        <item>П <b>•— —•</b></item>
+        <item>Р <b>•—•</b></item>
+        <item>С <b>•••</b></item>
+        <item>Т <b>—</b></item>
+        <item>У <b>••—</b></item>
+        <item>Ф <b>••—•</b></item>
+        <item>Х <b>••••</b></item>
+        <item>Ц <b>—•—•</b></item>
+        <item>Ч <b>— — —•</b></item>
+        <item>Ш <b>— — — —</b></item>
+        <item>Щ <b>— — • —</b></item>
+        <item>Э <b>••—••</b></item>
+        <item>Ю <b>••— —</b></item>
+        <item>Я <b>•—•—</b></item>
+        <item>Ь <b>—••—</b></item>
+        <item>Ы <b>—•—</b></item>
+        <item>Й <b>•— — —</b></item>
+        <item>. <b>•—•—•—</b></item>
+        <item>, <b>— —••— —</b></item>
+        <item>: <b>— — —•••</b></item>
+        <item>; <b>—•—•—•</b></item>
+        <item>" <b>•—•—•</b></item>
+        <item>` <b>•— — — —•</b></item>
+        <item>[? <b>••— —••]</b></item>
+        <item>[! <b>— —••— —]</b></item>
+        <item>[/ <b>—••—•]</b></item>
+        <item>[@ <b>•— —•—•]</b></item>
+        <item>1 <b>•— — — —</b></item>
+        <item>2 <b>••— — —</b></item>
+        <item>3 <b>•••— —</b></item>
+        <item>4 <b>••••—</b></item>
+        <item>5 <b>•••••</b></item>
+        <item>6 <b>—••••</b></item>
+        <item>7 <b>— —•••</b></item>
+        <item>8 <b>— — —••</b></item>
+        <item>9 <b>— — — —•</b></item>
+        <item>0 <b>— — — — —</b></item>
+        <item>= <b>—•••—</b></item>
+        <item>+ <b>•—•—•</b></item>
+    </string-array>
+
 </resources>

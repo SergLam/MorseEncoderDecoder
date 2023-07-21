@@ -1,33 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_frame"
     android:tag="main"
     android:layout_gravity="center"
     android:paddingBottom="5sp"
     android:paddingTop="5sp"
     android:paddingRight="5sp"
-    android:paddingLeft="5sp"
-    android:background="@color/colorPrimary">
+    android:paddingLeft="5sp">
 
     <View
+        android:id="@+id/view1"
         android:layout_width="fill_parent"
         android:layout_height="5dp"
         android:background="@color/colorPrimaryDark"
-        android:id="@+id/view1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
+        android:id="@+id/eng_text"
+        style="@style/TheoryTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/eng_text"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:background="@android:color/white"
         android:hint="@string/hint_text"
         android:minLines="3"
         android:layout_below="@+id/view1"
@@ -39,21 +37,17 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimaryDark"
         android:id="@+id/view"
         android:layout_below="@+id/eng_text"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
+        android:id="@+id/morse_text"
+        style="@style/TheoryTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/morse_text"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@android:color/white"
+        android:padding="@dimen/root_element_margin"
         android:hint="@string/hint_code"
         android:minLines="3"
         android:layout_below="@+id/view"
@@ -63,20 +57,20 @@
         android:maxLines="3" />
 
     <View
+        android:id="@+id/view2"
         android:layout_width="fill_parent"
         android:layout_height="5dp"
         android:background="@color/colorPrimaryDark"
-        android:id="@+id/view2"
         android:layout_below="@+id/morse_text"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Button
+        android:id="@+id/trans_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_trns"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/trans_btn"
         android:layout_below="@+id/view2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -84,64 +78,64 @@
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/cur_lang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/cur_lang"
-        android:id="@+id/cur_lang"
+
         android:layout_below="@+id/radio_mode"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/l_mode"
-        android:id="@+id/textView2"
         android:layout_below="@+id/trans_btn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <RadioGroup
+        android:id="@+id/radio_mode"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_below="@+id/textView2"
         android:orientation="horizontal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/radio_mode">
+        android:layout_alignParentStart="true">
 
         <RadioButton
+            android:id="@+id/radio_encode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/r_btn_encode"
             android:checked="true"
-            android:id="@+id/radio_encode"
             android:tag="encode"/>
 
         <RadioButton
+            android:id="@+id/radio_decode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/r_btn_decode"
-            android:id="@+id/radio_decode"
             android:tag="decode"/>
     </RadioGroup>
 
     <Button
+        android:id="@+id/btn_flag"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:id="@+id/btn_flag"
         android:enabled="false"
         android:layout_below="@+id/cur_lang"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/radio_mode"
         android:layout_alignEnd="@+id/radio_mode" />
-
 
 </RelativeLayout>

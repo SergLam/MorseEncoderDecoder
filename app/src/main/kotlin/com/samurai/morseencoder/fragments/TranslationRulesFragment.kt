@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.samurai.morseencoder.activities.TranslationEnglishActivity
-import com.samurai.morseencoder.activities.TranslationGermanActivity
-import com.samurai.morseencoder.activities.TranslationRussianActivity
+import com.samurai.morseencoder.activities.TranslationRulesActivity
+import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.sysequsol.R
 
 class TranslationRulesFragment : Fragment() {
@@ -18,22 +17,25 @@ class TranslationRulesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.rules, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_translation_rules, container, false)
         val buttonEnglish = view.findViewById<Button>(R.id.tr_btn_eng)
         buttonEnglish.setOnClickListener {
-            val intent = Intent(activity, TranslationEnglishActivity::class.java)
-            startActivity(intent)
+            startTranslationRulesActivity(code = LanguageCode.ENGLISH)
         }
         val buttonRussian = view.findViewById<Button>(R.id.tr_btn_rus)
         buttonRussian.setOnClickListener {
-            val intent = Intent(activity, TranslationRussianActivity::class.java)
-            startActivity(intent)
+            startTranslationRulesActivity(code = LanguageCode.RUSSIAN)
         }
         val buttonGerman = view.findViewById<Button>(R.id.tr_btn_germ)
         buttonGerman.setOnClickListener {
-            val intent = Intent(activity, TranslationGermanActivity::class.java)
-            startActivity(intent)
+            startTranslationRulesActivity(code = LanguageCode.GERMAN)
         }
         return view
+    }
+
+    private fun startTranslationRulesActivity(code: LanguageCode) {
+        val intent = Intent(activity, TranslationRulesActivity::class.java)
+        intent.putExtra(TranslationRulesActivity.languageCodeKey, code.value)
+        startActivity(intent)
     }
 }

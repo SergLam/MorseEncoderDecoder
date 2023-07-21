@@ -27,7 +27,7 @@ class TranslationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.main_frame, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_main_translation, container, false)
         // Set filter to morse text field
         val morse: EditText = view.findViewById(R.id.morse_text)
         val filter: InputFilter = object : InputFilter {

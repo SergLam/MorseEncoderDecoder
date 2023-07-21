@@ -1,23 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings"
     android:tag="settings"
     android:layout_gravity="center"
     android:paddingBottom="2sp"
     android:paddingRight="2sp"
-    android:paddingLeft="2sp"
-    android:background="@color/colorPrimary">
-
+    android:paddingLeft="2sp">
 
     <TextView
+        android:id="@+id/settings_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/input_lang"
-        android:id="@+id/settings_title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -68,20 +65,18 @@
 
         <TableRow>
             <TextView
+                android:id="@id/eng_text"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:id="@id/eng_text"
                 android:layout_gravity="center_vertical"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"
-                android:text="@string/l_eng"
-                />
+                android:text="@string/l_eng" />
 
             <ImageView
+                android:id="@+id/image_eng_flag"
                 android:layout_toRightOf="@+id/eng_text"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
-                android:id="@+id/image_eng_flag"
                 android:background="@drawable/eng_flag"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
@@ -89,20 +84,20 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
+                android:id="@+id/rus_text"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:id="@id/rus_text"
                 android:layout_gravity="center_vertical"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"
                 android:text="@string/l_rus"
                 />
 
             <ImageView
+                android:id="@+id/image_rus_flag"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
-                android:id="@+id/image_rus_flag"
                 android:layout_below="@+id/image_eng_flag"
                 android:background="@drawable/rus_flag"
                 android:adjustViewBounds="true"
@@ -112,19 +107,18 @@
 
         <TableRow>
             <TextView
+                android:id="@+id/german_text"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:id="@id/german_text"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"
                 android:text="@string/l_germ"
                 android:layout_gravity="center_vertical"
                 />
 
             <ImageView
+                android:id="@+id/image_germ_flag"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
-                android:id="@+id/image_germ_flag"
                 android:layout_below="@+id/image_france_flag"
                 android:background="@drawable/german_flag"
                 android:adjustViewBounds="true"

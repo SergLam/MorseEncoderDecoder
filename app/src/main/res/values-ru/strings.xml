@@ -32,4 +32,12 @@
     <string name="mess_encode">Неправильный ввод или переключите язык</string>
     <string name="mess_decode">Неправильный ввод</string>
 
+    <!-- Translation rules English activity -->
+    <string name="translation_english_rules_nav_bar_title">Правила перевода Английский</string>
+    <string name="translation_title">Международный код Морзе</string>
+    <string name="translation_dash_equal_dots">• 1 тире = 3 точки.</string>
+    <string name="translation_space">• Расстояние между частями одной буквы = 1 точка. (1 звездочка)</string>
+    <string name="translation_space_letters">• Расстояние между буквами = 3 точки. (3 звездочки)</string>
+    <string name="translation_space_words">• Пробел между словами = 7 точек. (7 звездочка)</string>
+
 </resources>
