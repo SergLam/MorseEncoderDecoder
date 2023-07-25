@@ -132,20 +132,20 @@ class Encoding {
 
     //. . . -   . . .   - - .       . - - -   . . . -   . - . - .
     //.*.*.*-***.*.*.***-*-*.*******.*-*-*-***.*.*.*-***.*-*.*-*.
-    fun translate_to_code(text: String, lang: String): String {
+    fun translate_to_code(text: String, lang: LanguageCode): String {
         val translates = text.lowercase(Locale.getDefault()).toCharArray()
         // Get language selected in settings
         var result = ""
         translationCompleted = false
-        if (lang == LanguageCode.RUSSIAN.value && isRussian(text)) {
+        if (lang == LanguageCode.RUSSIAN && isRussian(text)) {
             result = rus_to_morse(translates)
             translationCompleted = true
         }
-        if (lang == LanguageCode.GERMAN.value && isGerman(text)) {
+        if (lang == LanguageCode.GERMAN && isGerman(text)) {
             result = germ_to_morse(translates)
             translationCompleted = true
         }
-        if (lang == LanguageCode.ENGLISH.value && isEnglish(text)) {
+        if (lang == LanguageCode.ENGLISH && isEnglish(text)) {
             result = eng_to_morse(translates)
             translationCompleted = true
         }

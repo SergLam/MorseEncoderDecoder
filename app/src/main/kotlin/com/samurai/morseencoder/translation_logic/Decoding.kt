@@ -110,19 +110,14 @@ class Decoding {
 
     //. . . -   . . .   - - .       . - - -   . . . -   . - . - .
     //.*.*.*-***.*.*.***-*-*.*******.*-*-*-***.*.*.*-***.*-*.*-*.
-    fun code_to_text(code: String, lang: String): String {
+    fun code_to_text(code: String, lang: LanguageCode): String {
         // Get language selected in settings
-        var result = ""
+        val result = when (lang) {
+            LanguageCode.RUSSIAN -> morse_to_rus(code)
+            LanguageCode.GERMAN -> morse_to_germ(code)
+            LanguageCode.ENGLISH -> morse_to_eng(code)
+        }
         translationCompleted = true
-        if (lang == LanguageCode.RUSSIAN.value) {
-            result = morse_to_rus(code)
-        }
-        if (lang == LanguageCode.GERMAN.value) {
-            result = morse_to_germ(code)
-        }
-        if (lang == LanguageCode.ENGLISH.value) {
-            result = morse_to_eng(code)
-        }
         return result
     }
 

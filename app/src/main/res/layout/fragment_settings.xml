@@ -77,7 +77,7 @@
                 android:layout_toRightOf="@+id/eng_text"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
-                android:background="@drawable/eng_flag"
+                android:src="@drawable/gb"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:layout_margin="2dp"/>
@@ -98,8 +98,8 @@
                 android:id="@+id/image_rus_flag"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
+                android:src="@drawable/ru"
                 android:layout_below="@+id/image_eng_flag"
-                android:background="@drawable/rus_flag"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:layout_margin="2dp"/>
@@ -119,8 +119,8 @@
                 android:id="@+id/image_germ_flag"
                 android:layout_width="225dp"
                 android:layout_height="140dp"
+                android:src="@drawable/de"
                 android:layout_below="@+id/image_france_flag"
-                android:background="@drawable/german_flag"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:layout_margin="2dp"/>

@@ -1,4 +1,4 @@
-package com.samurai.morseencoder.fragments
+package com.samurai.morseencoder.fragments.translation_rules
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,29 +7,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.samurai.morseencoder.activities.TranslationRulesActivity
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.sysequsol.R
 
 class TranslationRulesFragment : Fragment() {
 
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.fragment_translation_rules, container, false)
-        val buttonEnglish = view.findViewById<Button>(R.id.tr_btn_eng)
-        buttonEnglish.setOnClickListener {
-            startTranslationRulesActivity(code = LanguageCode.ENGLISH)
-        }
-        val buttonRussian = view.findViewById<Button>(R.id.tr_btn_rus)
-        buttonRussian.setOnClickListener {
-            startTranslationRulesActivity(code = LanguageCode.RUSSIAN)
-        }
-        val buttonGerman = view.findViewById<Button>(R.id.tr_btn_germ)
-        buttonGerman.setOnClickListener {
-            startTranslationRulesActivity(code = LanguageCode.GERMAN)
-        }
+        val view = inflater.inflate(R.layout.fragment_translation_rules, container, false)
+        recyclerView = view.findViewById(R.id.translation_rules_list)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
+        recyclerView.adapter = TranslationRulesAdapter(
+            items = TranslationRulesListItem.allRules,
+            onItemClick = {
+            startTranslationRulesActivity(it.code)
+        })
         return view
     }
 

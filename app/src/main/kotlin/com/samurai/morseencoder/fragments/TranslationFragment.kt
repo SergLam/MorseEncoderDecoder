@@ -13,6 +13,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.samurai.morseencoder.models.LanguageCode
+import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.morseencoder.translation_logic.Decoding
 import com.samurai.morseencoder.translation_logic.Encoding
 import com.samurai.morseencoder.utils.edit
@@ -47,7 +49,7 @@ class TranslationFragment : Fragment() {
                 return ""
             }
         }
-        morse.setFilters(arrayOf<InputFilter>(filter))
+        morse.filters = arrayOf(filter)
         // Set radiogroup listener
         val radGrp: RadioGroup = view.findViewById<View>(R.id.radio_mode) as RadioGroup
         val checkedRadioButtonID: Int = radGrp.checkedRadioButtonId
@@ -64,30 +66,35 @@ class TranslationFragment : Fragment() {
             val text: EditText = view.findViewById(R.id.eng_text)
             val code: EditText = view.findViewById(R.id.morse_text)
             requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
-                val mode: String = preferences.getString("mode", "")!!
-                val lang: String = preferences.getString("lang", "")!!
+                val modeRaw: String = preferences.getString("mode", "")!!
+                val mode = TranslationMode.getByValue(modeRaw) ?: TranslationMode.ENCODE
+                val langRaw: String = preferences.getString("lang", "")!!
+                val language = LanguageCode.getByValueIgnoreCaseOrNull(langRaw) ?: LanguageCode.ENGLISH
 
                 val message: String = text.text.toString()
-                val message_morse: String = code.text.toString()
-                if (mode == "encode") {
-                    val result = obj_encode.translate_to_code(message, lang)
-                    if (obj_encode.translationCompleted) {
-                        code.setText(result)
-                    } else Toast.makeText(
-                        activity,
-                        resources.getString(R.string.mess_encode),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                if (mode == "decode") {
-                    val result: String = obj_decode.code_to_text(message_morse, lang)
-                    if (obj_decode.translationCompleted) {
-                        text.setText(result)
-                    } else Toast.makeText(
-                        activity,
-                        resources.getString(R.string.mess_decode),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                val messageMorse: String = code.text.toString()
+                when (mode) {
+                    TranslationMode.ENCODE -> {
+                        val result = obj_encode.translate_to_code(message, language)
+                        if (obj_encode.translationCompleted) {
+                            code.setText(result)
+                        } else Toast.makeText(
+                            activity,
+                            resources.getString(R.string.mess_encode),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    TranslationMode.DECODE -> {
+                        val result: String = obj_decode.code_to_text(messageMorse, language)
+                        if (obj_decode.translationCompleted) {
+                            text.setText(result)
+                        } else Toast.makeText(
+                            activity,
+                            resources.getString(R.string.mess_decode),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }
@@ -109,13 +116,13 @@ class TranslationFragment : Fragment() {
         requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
             val lang: String? = preferences.getString("lang", "")
             if (lang == "english") {
-                flagButton.setBackgroundResource(R.drawable.eng_flag)
+                flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.gb)
             }
             if (lang == "russian") {
-                flagButton.setBackgroundResource(R.drawable.rus_flag)
+                flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.ru)
             }
             if (lang == "german") {
-                flagButton.setBackgroundResource(R.drawable.german_flag)
+                flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.de)
             }
         }
         return view

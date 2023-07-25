@@ -32,6 +32,11 @@
     <string name="mess_encode">Falsche Eingabedaten oder Umschaltsprache</string>
     <string name="mess_decode">Falsche Eingabedaten</string>
 
+    <!-- Translation rules list -->
+    <string name="translation_list_english_title">Englisch</string>
+    <string name="translation_list_russian_title">Russisch</string>
+    <string name="translation_list_german_title">Deutsch</string>
+
     <!-- Translation rules English activity -->
     <string name="translation_english_rules_nav_bar_title">Übersetzungsregeln Englisch</string>
     <string name="translation_title">Internationaler Morsecode</string>
