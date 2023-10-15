@@ -3,11 +3,12 @@ package com.samurai.morseencoder.fragments.translation_rules
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.sysequsol.R
 
 class TranslationRulesAdapter(
-    private val items: List<TranslationRulesListItem>,
-    private val onItemClick: (TranslationRulesListItem) -> Unit
+    private val items: List<TranslationLanguageListItem>,
+    private val onItemClick: (TranslationLanguageListItem) -> Unit
 ) : RecyclerView.Adapter<TranslationRulesViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): TranslationRulesViewHolder {

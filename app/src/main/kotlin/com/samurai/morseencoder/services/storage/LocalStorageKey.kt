@@ -6,6 +6,11 @@ package com.samurai.morseencoder.services.storage
  */
 enum class LocalStorageKey(val value: String) {
 
-    TRANSLATION_MODE_ENCODE("encode"),
-    TRANSLATION_MODE_DECODE("decode")
+    TRANSLATION_MODE("mode"),
+    TRANSLATION_LANGUAGE("language");
+
+    companion object {
+        // Default preferences file name.
+        const val APP_PREFERENCES = "app_settings"
+    }
 }

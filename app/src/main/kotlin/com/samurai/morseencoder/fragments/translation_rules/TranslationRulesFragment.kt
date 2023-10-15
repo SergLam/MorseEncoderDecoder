@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.samurai.morseencoder.activities.TranslationRulesActivity
 import com.samurai.morseencoder.models.LanguageCode
+import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.sysequsol.R
 
 class TranslationRulesFragment : Fragment() {
@@ -25,7 +25,7 @@ class TranslationRulesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.translation_rules_list)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         recyclerView.adapter = TranslationRulesAdapter(
-            items = TranslationRulesListItem.allRules,
+            items = TranslationLanguageListItem.allRules,
             onItemClick = {
             startTranslationRulesActivity(it.code)
         })

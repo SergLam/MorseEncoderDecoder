@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.samurai.morseencoder.fragments.TranslationFragment
 import com.samurai.morseencoder.fragments.translation_rules.TranslationRulesFragment
-import com.samurai.morseencoder.fragments.SettingsFragment
+import com.samurai.morseencoder.fragments.settings.SettingsFragment
 import com.samurai.sysequsol.R
 
 class MainActivityTabPagerAdapter(activity: FragmentActivity?) : FragmentStateAdapter(activity!!) {

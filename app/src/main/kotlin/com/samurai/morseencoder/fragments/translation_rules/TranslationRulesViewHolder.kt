@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.sysequsol.R
 
 class TranslationRulesViewHolder(
@@ -21,7 +22,7 @@ class TranslationRulesViewHolder(
         }
     }
 
-    fun bind(model: TranslationRulesListItem) {
+    fun bind(model: TranslationLanguageListItem) {
         languageIconImageView.setImageResource(model.flagResId)
         val countryName = languageNameTextView.context.getString(model.countryNameResId)
         languageNameTextView.text = countryName
