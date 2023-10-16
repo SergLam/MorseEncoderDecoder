@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.sysequsol.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.round
 
+@AndroidEntryPoint
 class TranslationRulesActivity : AppCompatActivity() {
 
     private lateinit var translationAlphabetGridLayout: GridLayout
@@ -18,7 +20,6 @@ class TranslationRulesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.ActionBarAppTheme)
         setContentView(R.layout.activity_translation_rules)
         setupActionBar()
         initSubviews()

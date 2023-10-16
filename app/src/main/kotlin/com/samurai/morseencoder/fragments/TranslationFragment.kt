@@ -19,7 +19,9 @@ import com.samurai.morseencoder.translation_logic.Decoding
 import com.samurai.morseencoder.translation_logic.Encoding
 import com.samurai.morseencoder.utils.edit
 import com.samurai.sysequsol.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TranslationFragment : Fragment() {
 
     var obj_encode = Encoding()

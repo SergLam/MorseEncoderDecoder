@@ -1,25 +1,23 @@
 package com.samurai.morseencoder.fragments.settings
 
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationLanguageListItem
-import com.samurai.morseencoder.services.storage.LocalStorageKey
 import com.samurai.morseencoder.services.storage.LocalStorageServiceImpl
-import org.intellij.lang.annotations.Language
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SettingsViewModel constructor(
-    context: Context
+@HiltViewModel
+class SettingsViewModel @Inject constructor(
+    private val sharedPreferences: SharedPreferences
 ): ViewModel() {
 
     private var selectedLanguage: LanguageCode
 
     var listDataSource: List<SettingsLanguageListItem>
 
-    private val storage = LocalStorageServiceImpl(
-        sharedPreferences = context.getSharedPreferences(LocalStorageKey.APP_PREFERENCES, MODE_PRIVATE)
-    )
+    private val storage = LocalStorageServiceImpl(sharedPreferences = sharedPreferences)
 
     init {
         selectedLanguage = storage.getCurrentInputLanguage()
@@ -32,7 +30,9 @@ class SettingsViewModel constructor(
 
     fun saveSelectedLanguage(language: LanguageCode) {
         selectedLanguage = language
-        listDataSource.first { it.item.code == language }.selected = true
+        listDataSource.forEach {
+            it.selected = it.item.code == language
+        }
         storage.setCurrentInputLanguage(language)
     }
 }

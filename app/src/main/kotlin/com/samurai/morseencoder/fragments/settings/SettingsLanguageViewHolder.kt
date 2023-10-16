@@ -15,13 +15,13 @@ class SettingsLanguageViewHolder(
 
     private val languageIconImageView: ImageView
     private val languageNameTextView: TextView
-    private val languageSelectedRadioButton: RadioButton
+    val radioButton: RadioButton
+
     init {
-        languageIconImageView = view.findViewById(R.id.rules_flag_image)
-        languageNameTextView = view.findViewById(R.id.rules_language_name)
-        languageSelectedRadioButton = view.findViewById(R.id.settings_language_radio_btn)
+        languageIconImageView = view.findViewById(R.id.settings_flag_image)
+        languageNameTextView = view.findViewById(R.id.settings_language_name)
+        radioButton = view.findViewById(R.id.settings_language_radio_btn)
         view.setOnClickListener {
-            languageSelectedRadioButton.isChecked = true
             onItemClicked(adapterPosition)
         }
     }
@@ -30,6 +30,6 @@ class SettingsLanguageViewHolder(
         languageIconImageView.setImageResource(model.item.flagResId)
         val countryName = languageNameTextView.context.getString(model.item.countryNameResId)
         languageNameTextView.text = countryName
-        languageSelectedRadioButton.isChecked = model.selected
+        radioButton.isChecked = model.selected
     }
 }

@@ -7,7 +7,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.samurai.morseencoder.MainActivityTabPagerAdapter
 import com.samurai.sysequsol.R
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout

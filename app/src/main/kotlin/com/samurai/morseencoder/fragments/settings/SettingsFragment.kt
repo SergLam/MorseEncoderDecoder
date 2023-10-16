@@ -5,28 +5,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
-import com.samurai.morseencoder.utils.edit
-import com.samurai.sysequsol.R
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.samurai.morseencoder.fragments.translation_rules.TranslationRulesAdapter
 import com.samurai.morseencoder.models.LanguageCode
-import com.samurai.morseencoder.models.TranslationLanguageListItem
-import org.intellij.lang.annotations.Language
+import com.samurai.morseencoder.services.storage.LocalStorageKey
+import com.samurai.sysequsol.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
-    private val viewModel: SettingsViewModel by lazy {
-        ViewModelProvider(this)[SettingsViewModel::class.java]
-    }
+    private val viewModel: SettingsViewModel by viewModels()
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: SettingsLanguageAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +30,7 @@ class SettingsFragment : Fragment() {
         adapter = SettingsLanguageAdapter(
             items = viewModel.listDataSource,
             onItemClick = {
-                setLanguage(it.code)
+                setLanguage(it)
             })
         recyclerView = view.findViewById(R.id.translation_rules_list)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -43,8 +38,9 @@ class SettingsFragment : Fragment() {
         return view
     }
 
-    private fun setLanguage(language: LanguageCode) {
-        viewModel.saveSelectedLanguage(language)
+    private fun setLanguage(model: SettingsLanguageListItem) {
+        viewModel.saveSelectedLanguage(model.item.code)
+        adapter.setData(viewModel.listDataSource)
         adapter.notifyDataSetChanged()
     }
 }

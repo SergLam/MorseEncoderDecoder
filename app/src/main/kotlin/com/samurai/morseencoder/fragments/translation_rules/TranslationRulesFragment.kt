@@ -12,7 +12,9 @@ import com.samurai.morseencoder.activities.TranslationRulesActivity
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.sysequsol.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TranslationRulesFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
