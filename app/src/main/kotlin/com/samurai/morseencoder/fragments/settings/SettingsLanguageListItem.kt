@@ -4,6 +4,7 @@ import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationLanguageListItem
 
 data class SettingsLanguageListItem(
+    val index: Int,
     val item: TranslationLanguageListItem,
     var selected: Boolean
     ) {
@@ -12,9 +13,9 @@ data class SettingsLanguageListItem(
 
         fun buildModelsList(items: List<TranslationLanguageListItem>,
                             selectedLanguage: LanguageCode): List<SettingsLanguageListItem> {
-            return items.map {
-                val isSelected = it.code == selectedLanguage
-                SettingsLanguageListItem(item = it, selected = isSelected)
+            return items.mapIndexed { index, element ->
+                val isSelected = element.code == selectedLanguage
+                SettingsLanguageListItem(index = index, item = element, selected = isSelected)
             }
         }
     }

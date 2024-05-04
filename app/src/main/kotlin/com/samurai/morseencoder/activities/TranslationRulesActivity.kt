@@ -7,10 +7,11 @@ import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.sysequsol.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.round
+
 
 @AndroidEntryPoint
 class TranslationRulesActivity : AppCompatActivity() {
@@ -29,6 +30,8 @@ class TranslationRulesActivity : AppCompatActivity() {
 
     // region ACTION_BAR
     private fun setupActionBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_translation_rules)
+        setSupportActionBar(toolbar)
         supportActionBar?.title = getString(R.string.translation_english_rules_nav_bar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)

@@ -30,7 +30,7 @@ class SettingsViewModel @Inject constructor(
 
     fun saveSelectedLanguage(language: LanguageCode) {
         selectedLanguage = language
-        listDataSource.forEach {
+        listDataSource.map {
             it.selected = it.item.code == language
         }
         storage.setCurrentInputLanguage(language)

@@ -41,6 +41,8 @@ class SettingsFragment : Fragment() {
     private fun setLanguage(model: SettingsLanguageListItem) {
         viewModel.saveSelectedLanguage(model.item.code)
         adapter.setData(viewModel.listDataSource)
-        adapter.notifyDataSetChanged()
+        viewModel.listDataSource.forEachIndexed{ index, _ ->
+            adapter.notifyItemChanged(index)
+        }
     }
 }

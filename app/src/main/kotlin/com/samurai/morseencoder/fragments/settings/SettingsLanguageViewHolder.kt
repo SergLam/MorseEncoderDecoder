@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.sysequsol.R
+import java.text.FieldPosition
 
 class SettingsLanguageViewHolder(
     view: View,

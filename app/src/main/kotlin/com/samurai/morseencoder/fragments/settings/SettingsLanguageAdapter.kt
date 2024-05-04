@@ -30,6 +30,15 @@ class SettingsLanguageAdapter(
     override
     fun onBindViewHolder(viewHolder: SettingsLanguageViewHolder, position: Int) {
         viewHolder.bind(items[position])
+        viewHolder.radioButton.isChecked = position == mCheckedPosition
+        viewHolder.radioButton.setOnClickListener {
+            if (position == mCheckedPosition) {
+                viewHolder.radioButton.isChecked = true
+            } else {
+                mCheckedPosition = position
+                notifyDataSetChanged()
+            }
+        }
     }
 
     override fun getItemCount() = items.size
