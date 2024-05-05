@@ -50,19 +50,19 @@ class EnglishTranslationViewModel : ViewModel() {
     fun morseToEnglish(code: String): String {
         var code = code
         var result = ""
-        var is_match = false
+        var isMatch = false
         code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(),  MorseCharacters.COMMAS_WITH_SPACE.value)
         code = code.replace(MorseCharacters.LETTER_SPACING.value.toRegex(), MorseCharacters.COMMA.value)
         val code_split = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (j in code_split.indices) {
-            is_match = false
+            isMatch = false
             for (i in englishAlphabet.indices) {
                 if (englishMorseCodes[i] == code_split[j]) {
-                    is_match = true
+                    isMatch = true
                     result += englishAlphabet[i]
                 }
             }
-            if (is_match) {
+            if (isMatch) {
             } else translationCompleted = false
         }
         return result

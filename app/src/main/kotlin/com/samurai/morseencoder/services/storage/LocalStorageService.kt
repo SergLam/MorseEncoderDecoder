@@ -7,6 +7,8 @@ interface LocalStorageService {
 
     fun getActiveTranslationMode(): TranslationMode
 
+    fun setActiveTranslationMode(mode: TranslationMode)
+
     fun getCurrentInputLanguage(): LanguageCode
 
     fun setCurrentInputLanguage(language: LanguageCode)

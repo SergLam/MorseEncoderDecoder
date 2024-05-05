@@ -1,4 +1,4 @@
-package com.samurai.morseencoder.fragments
+package com.samurai.morseencoder.fragments.translation
 
 import android.content.Context
 import android.os.Bundle
@@ -9,23 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationMode
-import com.samurai.morseencoder.translation_logic.Decoding
-import com.samurai.morseencoder.translation_logic.Encoding
-import com.samurai.morseencoder.utils.edit
 import com.samurai.sysequsol.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TranslationFragment : Fragment() {
 
-    var obj_encode = Encoding()
-    var obj_decode: Decoding = Decoding()
+    private val viewModel: TranslationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +37,7 @@ class TranslationFragment : Fragment() {
             ): CharSequence {
                 for (i in start until end) {
                     // Your condition here
-                    val result = Character.toString(source[i]) == "." || Character.toString(
-                        source[i]
-                    ) == "-" || Character.toString(source[i]) == "*"
+                    val result = source[i].toString() == "." || source[i].toString() == "-" || source[i].toString() == "*"
                     if (!result) {
                         return ""
                     }
@@ -52,13 +46,16 @@ class TranslationFragment : Fragment() {
             }
         }
         morse.filters = arrayOf(filter)
-        // Set radiogroup listener
+        // Set radio group listener
         val radGrp: RadioGroup = view.findViewById<View>(R.id.radio_mode) as RadioGroup
-        val checkedRadioButtonID: Int = radGrp.checkedRadioButtonId
-        radGrp.setOnCheckedChangeListener { arg0, id ->
-            when (id) {
-                R.id.radio_encode -> get_mode(view)
-                R.id.radio_decode -> get_mode(view)
+        radGrp.setOnCheckedChangeListener { _, checkedID ->
+            when (checkedID) {
+                R.id.radio_encode -> {
+                    viewModel.saveTranslationMode(TranslationMode.ENCODE)
+                }
+                R.id.radio_decode -> {
+                    viewModel.saveTranslationMode(TranslationMode.DECODE)
+                }
                 else -> {}
             }
         }
@@ -77,8 +74,8 @@ class TranslationFragment : Fragment() {
                 val messageMorse: String = code.text.toString()
                 when (mode) {
                     TranslationMode.ENCODE -> {
-                        val result = obj_encode.translate_to_code(message, language)
-                        if (obj_encode.translationCompleted) {
+                        val result = viewModel.encoding.translateToCode(message, language)
+                        if (viewModel.encoding.translationCompleted) {
                             code.setText(result)
                         } else Toast.makeText(
                             activity,
@@ -88,8 +85,8 @@ class TranslationFragment : Fragment() {
                     }
 
                     TranslationMode.DECODE -> {
-                        val result: String = obj_decode.code_to_text(messageMorse, language)
-                        if (obj_decode.translationCompleted) {
+                        val result: String = viewModel.decoding.code_to_text(messageMorse, language)
+                        if (viewModel.decoding.translationCompleted) {
                             text.setText(result)
                         } else Toast.makeText(
                             activity,
@@ -100,46 +97,22 @@ class TranslationFragment : Fragment() {
                 }
             }
         }
-        // Put preferences to flag choise
-        requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
-            preferences.edit {
-                this.putString("lang", "english")
-                this.putString("mode", "encode")
-                this.apply()
-            }
-        }
-
-        set_flag(view)
+        setFlag(view)
         return view
     }
 
-    fun set_flag(view: View): View {
+    private fun setFlag(view: View) {
         val flagButton = view.findViewById<Button>(R.id.btn_flag)
-        requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
-            val lang: String? = preferences.getString("lang", "")
-            if (lang == "english") {
+        when(viewModel.getSelectedLanguage()) {
+            LanguageCode.ENGLISH -> {
                 flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.gb)
             }
-            if (lang == "russian") {
-                flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.ru)
-            }
-            if (lang == "german") {
+            LanguageCode.GERMAN -> {
                 flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.de)
             }
-        }
-        return view
-    }
-
-    fun get_mode(view: View) {
-        val radio: RadioGroup = view.findViewById(R.id.radio_mode)
-        val radioButtonID: Int = radio.checkedRadioButtonId
-        val radioBut: RadioButton = view.findViewById(radioButtonID)
-        val mode = radioBut.tag as String
-        requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
-            preferences.edit {
-                this.putString("mode", mode)
+            LanguageCode.RUSSIAN -> {
+                flagButton.setBackgroundResource(com.idmikael.flags_iso.R.drawable.ru)
             }
         }
-        //Toast.makeText(getActivity(), mode, Toast.LENGTH_LONG).show();
     }
 }

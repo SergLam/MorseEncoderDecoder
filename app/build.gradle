@@ -66,7 +66,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:1.6.7"
 
     // Fragment / view model
-    def lifecycle = "2.6.2"
+    def lifecycle = "2.7.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle}"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle}"
 

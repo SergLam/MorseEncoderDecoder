@@ -17,6 +17,13 @@ class LocalStorageServiceImpl(
     }
 
     override
+    fun setActiveTranslationMode(mode: TranslationMode) {
+        sharedPreferences.edit {
+            this.putString(LocalStorageKey.TRANSLATION_MODE.value, mode.value)
+        }
+    }
+
+    override
     fun getCurrentInputLanguage(): LanguageCode {
         val string = sharedPreferences.getString(LocalStorageKey.TRANSLATION_LANGUAGE.value, LanguageCode.ENGLISH.value) ?: LanguageCode.ENGLISH.value
         return LanguageCode.getByValueIgnoreCaseOrNull(string) ?: LanguageCode.ENGLISH

@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_frame"
-    android:tag="main"
     android:layout_gravity="center"
     android:paddingBottom="5sp"
     android:paddingTop="5sp"
@@ -65,12 +64,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/trans_btn"
+        style="@style/ActionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_trns"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/view2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -79,20 +78,20 @@
 
     <TextView
         android:id="@+id/cur_lang"
+        style="@style/SystemInputTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/cur_lang"
-
         android:layout_below="@+id/radio_mode"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/SystemInputTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/l_mode"
         android:layout_below="@+id/trans_btn"
         android:layout_alignParentLeft="true"

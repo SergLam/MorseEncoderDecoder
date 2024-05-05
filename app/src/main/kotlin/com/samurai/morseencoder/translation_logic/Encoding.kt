@@ -132,21 +132,21 @@ class Encoding {
 
     //. . . -   . . .   - - .       . - - -   . . . -   . - . - .
     //.*.*.*-***.*.*.***-*-*.*******.*-*-*-***.*.*.*-***.*-*.*-*.
-    fun translate_to_code(text: String, lang: LanguageCode): String {
+    fun translateToCode(text: String, lang: LanguageCode): String {
         val translates = text.lowercase(Locale.getDefault()).toCharArray()
         // Get language selected in settings
         var result = ""
         translationCompleted = false
         if (lang == LanguageCode.RUSSIAN && isRussian(text)) {
-            result = rus_to_morse(translates)
+            result = russianToMorse(translates)
             translationCompleted = true
         }
         if (lang == LanguageCode.GERMAN && isGerman(text)) {
-            result = germ_to_morse(translates)
+            result = germanToMorse(translates)
             translationCompleted = true
         }
         if (lang == LanguageCode.ENGLISH && isEnglish(text)) {
-            result = eng_to_morse(translates)
+            result = englishToMorse(translates)
             translationCompleted = true
         }
         return result
@@ -200,7 +200,7 @@ class Encoding {
         return result
     }
 
-    private fun eng_to_morse(translates: CharArray): String {
+    private fun englishToMorse(translates: CharArray): String {
         var morse = ""
         for (j in translates.indices) {
             val a = translates[j]
@@ -221,7 +221,7 @@ class Encoding {
         return morse
     }
 
-    private fun germ_to_morse(translates: CharArray): String {
+    private fun germanToMorse(translates: CharArray): String {
         var morse = ""
         for (characterIndex in translates.indices) {
             val a = translates[characterIndex]
@@ -242,7 +242,7 @@ class Encoding {
         return morse
     }
 
-    private fun rus_to_morse(translates: CharArray): String {
+    private fun russianToMorse(translates: CharArray): String {
         var morse = ""
         for (j in translates.indices) {
             val a = translates[j]

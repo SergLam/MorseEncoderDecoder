@@ -3,7 +3,7 @@ package com.samurai.morseencoder
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.samurai.morseencoder.fragments.TranslationFragment
+import com.samurai.morseencoder.fragments.translation.TranslationFragment
 import com.samurai.morseencoder.fragments.translation_rules.TranslationRulesFragment
 import com.samurai.morseencoder.fragments.settings.SettingsFragment
 import com.samurai.sysequsol.R
