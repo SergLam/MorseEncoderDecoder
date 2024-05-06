@@ -1,17 +1,16 @@
 package com.samurai.morseencoder.fragments.translation
 
-import android.content.Context
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
@@ -38,7 +37,6 @@ class TranslationFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_main_translation, container, false)
         // Set filter to morse text field
         initSubviews(view)
-        setMorseEditTextFilter()
         setTranslationModeChangeListener()
         setTranslateButtonClickListener()
         return view
@@ -57,25 +55,6 @@ class TranslationFragment : Fragment() {
         modeRadioGroup = view.findViewById(R.id.radio_mode)
     }
 
-    private fun setMorseEditTextFilter() {
-        val filter: InputFilter = object : InputFilter {
-            override fun filter(
-                source: CharSequence, start: Int, end: Int,
-                dest: Spanned, dstart: Int, dend: Int
-            ): CharSequence {
-                for (i in start until end) {
-                    // Your condition here
-                    val result = source[i].toString() == "." || source[i].toString() == "-" || source[i].toString() == "*"
-                    if (!result) {
-                        return ""
-                    }
-                }
-                return ""
-            }
-        }
-        morseEditText.filters = arrayOf(filter)
-    }
-
     private fun setTranslationModeChangeListener() {
         modeRadioGroup.setOnCheckedChangeListener { _, checkedID ->
             when (checkedID) {
@@ -92,40 +71,33 @@ class TranslationFragment : Fragment() {
 
     private fun setTranslateButtonClickListener() {
         translateButton.setOnClickListener {
-
-            requireContext().getSharedPreferences("flag", Context.MODE_PRIVATE).let { preferences ->
-                val modeRaw: String = preferences.getString("mode", "")!!
-                val mode = TranslationMode.getByValue(modeRaw) ?: TranslationMode.ENCODE
-                val langRaw: String = preferences.getString("lang", "")!!
-                val language = LanguageCode.getByValueIgnoreCaseOrNull(langRaw) ?: LanguageCode.ENGLISH
-
-                val message: String = languageInputEditText.text.toString()
-                val messageMorse: String = morseEditText.text.toString()
-                when (mode) {
-                    TranslationMode.ENCODE -> {
-                        val result = viewModel.encoding.translateToCode(message, language)
-                        if (viewModel.encoding.translationCompleted) {
-                            morseEditText.setText(result)
-                        } else Toast.makeText(
-                            activity,
-                            resources.getString(R.string.mess_encode),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    TranslationMode.DECODE -> {
-                        val result: String = viewModel.decoding.code_to_text(messageMorse, language)
-                        if (viewModel.decoding.translationCompleted) {
-                            languageInputEditText.setText(result)
-                        } else Toast.makeText(
-                            activity,
-                            resources.getString(R.string.mess_decode),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+            val mode = viewModel.getTranslationMode()
+            val language = viewModel.getSelectedLanguage()
+            val message: String = languageInputEditText.text.toString()
+            val messageMorse: String = morseEditText.text.toString()
+            when (mode) {
+                TranslationMode.ENCODE -> {
+                    val result = viewModel.encoding.translateToCode(message, language)
+                    if (viewModel.encoding.translationCompleted) {
+                        morseEditText.setText(result)
+                    } else showErrorToast(R.string.mess_encode)
+                }
+                TranslationMode.DECODE -> {
+                    val result: String = viewModel.decoding.code_to_text(messageMorse, language)
+                    if (viewModel.decoding.translationCompleted) {
+                        languageInputEditText.setText(result)
+                    } else showErrorToast(R.string.mess_decode)
                 }
             }
         }
+    }
+
+    private fun showErrorToast(@StringRes messageStringId: Int) {
+        Toast.makeText(
+            activity,
+            resources.getString(messageStringId),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun setFlagImage() {

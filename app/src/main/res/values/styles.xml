@@ -1,14 +1,11 @@
 <resources>
 
     <!-- AppCompat application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor">@color/status_bar_background</item>
-    </style>
-
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
@@ -34,6 +31,7 @@
 
     <style name="ActionButtonStyle" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:background">@drawable/rounded_button_shape</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Button</item>
     </style>
 
     <style name="SystemInputTextStyle"
