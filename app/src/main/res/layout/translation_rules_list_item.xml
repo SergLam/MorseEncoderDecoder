@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/rules_language_name"
-        style="@style/TheoryTextStyle"
+        style="@style/BodyTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/rules_flag_image"

@@ -65,7 +65,7 @@ class TranslationRulesActivity : AppCompatActivity() {
 
         for ((index, string) in strings.withIndex()) {
             val translationTextView = TextView(this)
-            translationTextView.setTextAppearance(R.style.TheoryTextStyle)
+            translationTextView.setTextAppearance(R.style.BodyTextStyle)
             val filteredString = string.replace(squareBracesPattern, "")
             translationTextView.text = filteredString
             val param = GridLayout.LayoutParams()

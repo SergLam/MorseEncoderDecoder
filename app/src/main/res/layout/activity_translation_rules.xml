@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/translation_rules_title"
-            style="@style/TheoryTitleTextStyle"
+            style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/default_vertical_margin"
@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/translation_dash_equal_dots_text"
-            style="@style/TheoryTextStyle"
+            style="@style/BodyTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/default_vertical_margin"
@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/translation_space_text"
-            style="@style/TheoryTextStyle"
+            style="@style/BodyTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/default_vertical_margin"
@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/translation_space_letters_text"
-            style="@style/TheoryTextStyle"
+            style="@style/BodyTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/default_vertical_margin"
@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/translation_space_words_text"
-            style="@style/TheoryTextStyle"
+            style="@style/BodyTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/default_vertical_margin"

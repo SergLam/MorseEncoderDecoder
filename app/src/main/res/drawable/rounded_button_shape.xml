@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:padding="@dimen/translation_main_button_height">
+    <solid android:color="@color/colorPrimary"/>
+    <corners
+        android:bottomRightRadius="@dimen/translation_main_button_height"
+        android:bottomLeftRadius="@dimen/translation_main_button_height"
+        android:topLeftRadius="@dimen/translation_main_button_height"
+        android:topRightRadius="@dimen/translation_main_button_height"/>
+</shape>

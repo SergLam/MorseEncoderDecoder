@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/translation_rules_title_text"
-        style="@style/TheoryTitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_vertical_margin"

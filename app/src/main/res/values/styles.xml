@@ -15,16 +15,26 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="TheoryTitleTextStyle" parent="@style/TextAppearance.MaterialComponents.Headline5">
+    <style name="TitleTextStyle" parent="@style/TextAppearance.MaterialComponents.Headline5">
         <item name="android:textSize">@dimen/translation_rules_title_text_size</item>
     </style>
 
-    <style name="TheoryTextStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
+    <style name="BodyTextStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">@dimen/translation_rules_text_size</item>
     </style>
 
-    <style name="ActionButtonStyle"
-        parent="@style/Widget.MaterialComponents.Button"/>
+
+    <style name="CaptionTextStyle" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/caption_text_size</item>
+    </style>
+
+    <style name="EditTextSeparatorStyle">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="ActionButtonStyle" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/rounded_button_shape</item>
+    </style>
 
     <style name="SystemInputTextStyle"
         parent="TextAppearance.MaterialComponents.Headline6" />

@@ -38,6 +38,7 @@ class SettingsLanguageAdapter(
                 mCheckedPosition = position
                 notifyDataSetChanged()
             }
+            onItemClick(items[position])
         }
     }
 
