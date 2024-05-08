@@ -1,4 +1,4 @@
-package com.samurai.morseencoder.activities
+package com.samurai.morseencoder.activities.translation_rules
 
 import android.os.Bundle
 import android.view.Gravity

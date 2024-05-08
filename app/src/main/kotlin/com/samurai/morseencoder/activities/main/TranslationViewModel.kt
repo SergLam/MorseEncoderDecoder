@@ -1,4 +1,4 @@
-package com.samurai.morseencoder.fragments.translation
+package com.samurai.morseencoder.activities.main
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel

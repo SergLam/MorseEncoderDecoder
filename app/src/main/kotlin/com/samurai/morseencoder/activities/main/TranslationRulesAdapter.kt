@@ -1,4 +1,4 @@
-package com.samurai.morseencoder.fragments.translation_rules
+package com.samurai.morseencoder.activities.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

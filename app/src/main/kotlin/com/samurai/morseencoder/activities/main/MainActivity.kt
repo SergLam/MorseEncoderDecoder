@@ -1,64 +1,63 @@
-package com.samurai.morseencoder.fragments.translation
+package com.samurai.morseencoder.activities.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.samurai.morseencoder.activities.translation_rules.TranslationRulesActivity
 import com.samurai.morseencoder.models.LanguageCode
+import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.sysequsol.R
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
-class TranslationFragment : Fragment() {
+class MainActivity : AppCompatActivity() {
 
     private val viewModel: TranslationViewModel by viewModels()
 
-    private lateinit var flagImageView: ImageView
     private lateinit var languageInputEditText: EditText
     private lateinit var morseEditText: EditText
     private lateinit var translateButton: MaterialButton
     private lateinit var modeRadioGroup: RadioGroup
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val view: View = inflater.inflate(R.layout.fragment_main_translation, container, false)
-        // Set filter to morse text field
-        initSubviews(view)
+    private lateinit var flagImageView: ImageView
+    private lateinit var recyclerView: RecyclerView
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        initSubviews()
         setTranslationModeChangeListener()
         setTranslateButtonClickListener()
-        context?.let {
-            setLanguagePickerAction(it)
-        }
-        return view
+        setLanguagePickerAction(this)
+        setFlagImage(this)
     }
 
-    override fun onResume() {
-        super.onResume()
-        context?.let {
-            setFlagImage(it)
-        }
-    }
-
-    private fun initSubviews(view: View) {
-        morseEditText = view.findViewById(R.id.morse_text)
-        languageInputEditText = view.findViewById(R.id.eng_text)
-        flagImageView = view.findViewById(R.id.flag_image)
-        translateButton = view.findViewById(R.id.translate_button)
-        modeRadioGroup = view.findViewById(R.id.radio_mode)
+    private fun initSubviews() {
+        setSupportActionBar(findViewById(R.id.main_toolbar))
+        morseEditText = findViewById(R.id.morse_text)
+        languageInputEditText = findViewById(R.id.eng_text)
+        translateButton = findViewById(R.id.translate_button)
+        modeRadioGroup = findViewById(R.id.radio_mode)
+        flagImageView = findViewById(R.id.flag_image)
+        recyclerView = findViewById(R.id.translation_rules_list)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = TranslationRulesAdapter(
+            items = TranslationLanguageListItem.allRules,
+            onItemClick = {
+                startTranslationRulesActivity(it.code)
+            })
     }
 
     private fun setTranslationModeChangeListener() {
@@ -100,7 +99,7 @@ class TranslationFragment : Fragment() {
 
     private fun showErrorToast(@StringRes messageStringId: Int) {
         Toast.makeText(
-            activity,
+            this,
             resources.getString(messageStringId),
             Toast.LENGTH_SHORT
         ).show()
@@ -142,5 +141,11 @@ class TranslationFragment : Fragment() {
                 .show()
 
         }
+    }
+
+    private fun startTranslationRulesActivity(code: LanguageCode) {
+        val intent = Intent(this, TranslationRulesActivity::class.java)
+        intent.putExtra(TranslationRulesActivity.languageCodeKey, code.value)
+        startActivity(intent)
     }
 }
