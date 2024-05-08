@@ -3,6 +3,8 @@ package com.samurai.morseencoder.activities.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioGroup
@@ -42,6 +44,30 @@ class MainActivity : AppCompatActivity() {
         setTranslateButtonClickListener()
         setLanguagePickerAction(this)
         setFlagImage(this)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_settings -> {
+            // User chooses the "Settings" item. Show the app settings UI.
+            true
+        }
+
+        R.id.action_favorite -> {
+            // User chooses the "Favorite" action. Mark the current item as a
+            // favorite.
+            true
+        }
+
+        else -> {
+            // The user's action isn't recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 
     private fun initSubviews() {
