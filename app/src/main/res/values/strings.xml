@@ -8,6 +8,9 @@
         <item>Rules</item>
     </string-array>
 
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
     <string name="tab_main">Main</string>
     <string name="hint_text">Enter text</string>
     <string name="hint_code">Get a code\n(only dash(-), dot(.)\nand asterisk(*) allowed)</string>

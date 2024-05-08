@@ -12,6 +12,21 @@ enum class LanguageCode(val value: String) {
     RUSSIAN("russian");
 
     companion object {
+        fun selectedLanguageIndex(code: LanguageCode): Int {
+            val index = LanguageCode.values().indexOfFirst { it == code }
+            return if (index == -1) {
+                0
+            } else {
+                index
+            }
+        }
+        fun displayValue(code: LanguageCode, context: Context): String {
+            return when (code) {
+                ENGLISH -> context.resources.getString(R.string.translation_list_english_title)
+                GERMAN -> context.resources.getString(R.string.translation_list_german_title)
+                RUSSIAN -> context.resources.getString(R.string.translation_list_russian_title)
+            }
+        }
         fun getByValueIgnoreCaseOrNull(input: String): LanguageCode? {
             return values().firstOrNull { it.value.equals(input, true) }
         }

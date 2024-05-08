@@ -9,6 +9,9 @@
         <item>Regeln</item>
     </string-array>
 
+    <string name="ok">OK</string>
+    <string name="cancel">Stornieren</string>
+
     <string name="tab_main">Main</string>
     <string name="hint_text">Text eingeben</string>
     <string name="hint_code">Bekommen Sie einen Code\n(nur schlag(-), punkt(.)\nund sternchen(*) dürfen)</string>

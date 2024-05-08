@@ -2,9 +2,7 @@ package com.samurai.morseencoder.fragments.translation
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import com.samurai.morseencoder.fragments.settings.SettingsLanguageListItem
 import com.samurai.morseencoder.models.LanguageCode
-import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.morseencoder.services.storage.LocalStorageServiceImpl
 import com.samurai.morseencoder.translation_logic.Decoding
@@ -38,6 +36,11 @@ class TranslationViewModel @Inject constructor(
     fun getSelectedLanguage(): LanguageCode {
         selectedLanguage = storage.getCurrentInputLanguage()
         return selectedLanguage
+    }
+
+    fun getSelectedLanguageIndex(): Int {
+        selectedLanguage = storage.getCurrentInputLanguage()
+        return LanguageCode.selectedLanguageIndex(selectedLanguage)
     }
 
     fun saveSelectedLanguage(language: LanguageCode) {

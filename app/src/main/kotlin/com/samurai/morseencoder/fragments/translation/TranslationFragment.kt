@@ -1,8 +1,7 @@
 package com.samurai.morseencoder.fragments.translation
 
+import android.content.Context
 import android.os.Bundle
-import android.text.InputFilter
-import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,11 @@ import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.sysequsol.R
@@ -39,12 +40,17 @@ class TranslationFragment : Fragment() {
         initSubviews(view)
         setTranslationModeChangeListener()
         setTranslateButtonClickListener()
+        context?.let {
+            setLanguagePickerAction(it)
+        }
         return view
     }
 
     override fun onResume() {
         super.onResume()
-        setFlagImage()
+        context?.let {
+            setFlagImage(it)
+        }
     }
 
     private fun initSubviews(view: View) {
@@ -100,7 +106,7 @@ class TranslationFragment : Fragment() {
         ).show()
     }
 
-    private fun setFlagImage() {
+    private fun setFlagImage(context: Context) {
         when(viewModel.getSelectedLanguage()) {
             LanguageCode.ENGLISH -> {
                 flagImageView.setImageResource(com.idmikael.flags_iso.R.drawable.gb)
@@ -111,6 +117,30 @@ class TranslationFragment : Fragment() {
             LanguageCode.RUSSIAN -> {
                 flagImageView.setImageResource(com.idmikael.flags_iso.R.drawable.ru)
             }
+        }
+    }
+
+    private fun setLanguagePickerAction(context: Context) {
+        flagImageView.setOnClickListener{
+            val singleItems = LanguageCode.values().map{
+                LanguageCode.displayValue(it, context)
+            }.toTypedArray()
+            val checkedItem = viewModel.getSelectedLanguageIndex()
+            MaterialAlertDialogBuilder(context)
+                .setTitle(resources.getString(R.string.text_rules))
+                .setNeutralButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(resources.getString(R.string.ok)) { dialog, _ ->
+                    val selectedPosition: Int =
+                        (dialog as AlertDialog).listView.checkedItemPosition
+                    viewModel.saveSelectedLanguage(LanguageCode.values()[selectedPosition])
+                    setFlagImage(context)
+                    dialog.dismiss()
+                }
+                .setSingleChoiceItems(singleItems, checkedItem) { _, _ -> }
+                .show()
+
         }
     }
 }
