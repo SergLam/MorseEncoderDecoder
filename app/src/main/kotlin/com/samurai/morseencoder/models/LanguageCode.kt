@@ -38,5 +38,13 @@ enum class LanguageCode(val value: String) {
                 RUSSIAN -> context.resources.getStringArray(R.array.translation_russian_alphabet)
             }
         }
+
+        fun getTranslationRulesNavBarTitle(code: LanguageCode, context: Context): String {
+            return when (code) {
+                ENGLISH -> context.resources.getString(R.string.translation_english_rules_nav_bar_title)
+                GERMAN -> context.resources.getString(R.string.translation_german_rules_nav_bar_title)
+                RUSSIAN -> context.resources.getString(R.string.translation_russian_rules_nav_bar_title)
+            }
+        }
     }
 }

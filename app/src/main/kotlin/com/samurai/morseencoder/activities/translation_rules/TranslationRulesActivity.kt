@@ -1,5 +1,6 @@
 package com.samurai.morseencoder.activities.translation_rules
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
@@ -22,20 +23,12 @@ class TranslationRulesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_translation_rules)
-        setupActionBar()
         initSubviews()
         getExtras()
         displayTranslationRules()
     }
 
     // region ACTION_BAR
-    private fun setupActionBar() {
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_translation_rules)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.translation_english_rules_nav_bar_title)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
@@ -46,6 +39,17 @@ class TranslationRulesActivity : AppCompatActivity() {
 
     // endregion
 
+    private fun setupActionBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_translation_rules)
+        toolbar.setTitleTextColor(Color.WHITE)
+        toolbar.setSubtitleTextColor(Color.WHITE)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = LanguageCode.getTranslationRulesNavBarTitle(selectedLanguage, context = this)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
+    }
+
     private fun initSubviews() {
         translationAlphabetGridLayout = findViewById(R.id.translation_alphabet_grid_layout)
     }
@@ -55,6 +59,7 @@ class TranslationRulesActivity : AppCompatActivity() {
             val selectedLanguageValue = it.getString(languageCodeKey, LanguageCode.ENGLISH.value)!!
             selectedLanguage = LanguageCode.getByValueIgnoreCaseOrNull(selectedLanguageValue)
                 ?: LanguageCode.ENGLISH
+            setupActionBar()
         }
 
     }

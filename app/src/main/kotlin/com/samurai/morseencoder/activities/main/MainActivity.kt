@@ -17,18 +17,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.play.core.review.ReviewException
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
+import com.google.android.play.core.review.model.ReviewErrorCode
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import com.samurai.morseencoder.activities.translation_rules.TranslationRulesActivity
+import com.samurai.morseencoder.activities.translation_rules_list.TranslationRulesAdapter
 import com.samurai.morseencoder.models.LanguageCode
 import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.sysequsol.R
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
+import java.lang.RuntimeException
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: TranslationViewModel by viewModels()
+    private lateinit var reviewManager: ReviewManager
 
     private lateinit var languageInputEditText: EditText
     private lateinit var morseEditText: EditText
@@ -39,11 +50,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        reviewManager = ReviewManagerFactory.create(this)
         initSubviews()
         setTranslationModeChangeListener()
         setTranslateButtonClickListener()
         setLanguagePickerAction(this)
-        setFlagImage(this)
+        setFlagImage()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         R.id.action_favorite -> {
             // User chooses the "Favorite" action. Mark the current item as a
             // favorite.
+            requestAppReview()
             true
         }
 
@@ -131,7 +144,28 @@ class MainActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun setFlagImage(context: Context) {
+    private fun requestAppReview() {
+        val request = reviewManager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val reviewInfo = task.result
+                val flow = reviewManager.launchReviewFlow(this, reviewInfo)
+                flow.addOnCompleteListener { result ->
+                    val bundle = Bundle()
+                    bundle.putString("is_canceled", result.isCanceled.toString())
+                    bundle.putString("is_complete", result.isComplete.toString())
+                    bundle.putString("is_successful", result.isSuccessful.toString())
+                    Firebase.analytics.logEvent("app_review_completion", bundle)
+                }
+            } else {
+                @ReviewErrorCode
+                val code = (task.exception as ReviewException).errorCode
+                Firebase.crashlytics.recordException(RuntimeException("Review Error $code"))
+            }
+        }
+    }
+
+    private fun setFlagImage() {
         when(viewModel.getSelectedLanguage()) {
             LanguageCode.ENGLISH -> {
                 flagImageView.setImageResource(com.idmikael.flags_iso.R.drawable.gb)
@@ -160,7 +194,7 @@ class MainActivity : AppCompatActivity() {
                     val selectedPosition: Int =
                         (dialog as AlertDialog).listView.checkedItemPosition
                     viewModel.saveSelectedLanguage(LanguageCode.values()[selectedPosition])
-                    setFlagImage(context)
+                    setFlagImage()
                     dialog.dismiss()
                 }
                 .setSingleChoiceItems(singleItems, checkedItem) { _, _ -> }

@@ -64,6 +64,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.github.IDmikael:Flags-iso-Android:0.1.3'
     implementation "androidx.compose.material:material-icons-extended:1.6.7"
+    
+    // App Review
+    implementation 'com.google.android.play:review:2.0.1'
+    implementation 'com.google.android.play:review-ktx:2.0.1'
 
     // Fragment / view model
     def lifecycle = "2.7.0"

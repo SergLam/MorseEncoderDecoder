@@ -43,6 +43,8 @@
 
     <!-- Translation rules English activity -->
     <string name="translation_english_rules_nav_bar_title">Übersetzungsregeln Englisch</string>
+    <string name="translation_german_rules_nav_bar_title">Übersetzungsregeln Deutsch</string>
+    <string name="translation_russian_rules_nav_bar_title">Übersetzungsregeln Russisch</string>
     <string name="translation_title">Internationaler Morsecode</string>
     <string name="translation_dash_equal_dots">• 1 Strich = 3 Punkte.</string>
     <string name="translation_space">• Der Abstand zwischen Teilen desselben Buchstabens = 1 Punkt. (1 Sternchen)</string>

@@ -42,6 +42,8 @@
 
     <!-- Translation rules English activity -->
     <string name="translation_english_rules_nav_bar_title">Translation Rules English</string>
+    <string name="translation_german_rules_nav_bar_title">Translation Rules German</string>
+    <string name="translation_russian_rules_nav_bar_title">Translation Rules Russian</string>
     <string name="translation_title">International Morse Code</string>
     <string name="translation_dash_equal_dots">• 1 dash = 3 dots.</string>
     <string name="translation_space">• The space between parts of the same letter = 1 dot. (1 asterisk)</string>
