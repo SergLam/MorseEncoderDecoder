@@ -1,7 +1,9 @@
 package com.samurai.morseencoder.activities.main
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,12 +11,10 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.play.core.review.ReviewException
@@ -24,15 +24,11 @@ import com.google.android.play.core.review.model.ReviewErrorCode
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
-import com.samurai.morseencoder.activities.translation_rules.TranslationRulesActivity
-import com.samurai.morseencoder.activities.translation_rules_list.TranslationRulesAdapter
+import com.samurai.morseencoder.activities.translation_rules_list.TranslationRulesListActivity
 import com.samurai.morseencoder.models.LanguageCode
-import com.samurai.morseencoder.models.TranslationLanguageListItem
 import com.samurai.morseencoder.models.TranslationMode
 import com.samurai.sysequsol.R
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
-import java.lang.RuntimeException
 
 
 @AndroidEntryPoint
@@ -46,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var translateButton: MaterialButton
     private lateinit var modeRadioGroup: RadioGroup
     private lateinit var flagImageView: ImageView
-    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,20 +61,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_settings -> {
-            // User chooses the "Settings" item. Show the app settings UI.
+            startTranslationRulesListActivity()
             true
         }
-
         R.id.action_favorite -> {
-            // User chooses the "Favorite" action. Mark the current item as a
-            // favorite.
-            requestAppReview()
+            openPlayStorePage()
             true
         }
-
         else -> {
-            // The user's action isn't recognized.
-            // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
     }
@@ -90,13 +80,6 @@ class MainActivity : AppCompatActivity() {
         translateButton = findViewById(R.id.translate_button)
         modeRadioGroup = findViewById(R.id.radio_mode)
         flagImageView = findViewById(R.id.flag_image)
-        recyclerView = findViewById(R.id.translation_rules_list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = TranslationRulesAdapter(
-            items = TranslationLanguageListItem.allRules,
-            onItemClick = {
-                startTranslationRulesActivity(it.code)
-            })
     }
 
     private fun setTranslationModeChangeListener() {
@@ -127,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                     } else showErrorToast(R.string.mess_encode)
                 }
                 TranslationMode.DECODE -> {
-                    val result: String = viewModel.decoding.code_to_text(messageMorse, language)
+                    val result: String = viewModel.decoding.codeToText(messageMorse, language)
                     if (viewModel.decoding.translationCompleted) {
                         languageInputEditText.setText(result)
                     } else showErrorToast(R.string.mess_decode)
@@ -142,6 +125,14 @@ class MainActivity : AppCompatActivity() {
             resources.getString(messageStringId),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    private fun openPlayStorePage() {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+        } catch (e: ActivityNotFoundException) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+        }
     }
 
     private fun requestAppReview() {
@@ -199,13 +190,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setSingleChoiceItems(singleItems, checkedItem) { _, _ -> }
                 .show()
-
         }
     }
 
-    private fun startTranslationRulesActivity(code: LanguageCode) {
-        val intent = Intent(this, TranslationRulesActivity::class.java)
-        intent.putExtra(TranslationRulesActivity.languageCodeKey, code.value)
+    private fun startTranslationRulesListActivity() {
+        val intent = Intent(this, TranslationRulesListActivity::class.java)
         startActivity(intent)
     }
 }

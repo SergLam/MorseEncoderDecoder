@@ -47,23 +47,24 @@ class EnglishTranslationViewModel : ViewModel() {
         "-*.*.*.*-", ".*-*-*.*-*.", ".*-*.*-*.", ""
     )
 
-    fun morseToEnglish(code: String): String {
+    fun morseToEng(code: String): String {
         var code = code
         var result = ""
         var isMatch = false
-        code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(),  MorseCharacters.COMMAS_WITH_SPACE.value)
+        code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(), MorseCharacters.COMMAS_WITH_SPACE.value)
         code = code.replace(MorseCharacters.LETTER_SPACING.value.toRegex(), MorseCharacters.COMMA.value)
-        val code_split = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        for (j in code_split.indices) {
+        val codeSplit = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        for (j in codeSplit.indices) {
             isMatch = false
             for (i in englishAlphabet.indices) {
-                if (englishMorseCodes[i] == code_split[j]) {
+                if (englishMorseCodes[i] == codeSplit[j]) {
                     isMatch = true
-                    result += englishAlphabet[i]
+                    result += englishMorseCodes[i]
                 }
             }
-            if (isMatch) {
-            } else translationCompleted = false
+            if (!isMatch) {
+                translationCompleted = false
+            }
         }
         return result
     }

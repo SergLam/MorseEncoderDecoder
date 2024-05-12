@@ -18,7 +18,7 @@ class TranslationViewModel @Inject constructor(
     private var selectedLanguage: LanguageCode
 
     var encoding = Encoding()
-    var decoding: Decoding = Decoding()
+    var decoding = Decoding()
 
     private val storage = LocalStorageServiceImpl(sharedPreferences = sharedPreferences)
 

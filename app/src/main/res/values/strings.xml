@@ -41,6 +41,7 @@
     <string name="translation_list_german_title">German</string>
 
     <!-- Translation rules English activity -->
+    <string name="translation_rules_list_nav_bar_title">Translation Rules</string>
     <string name="translation_english_rules_nav_bar_title">Translation Rules English</string>
     <string name="translation_german_rules_nav_bar_title">Translation Rules German</string>
     <string name="translation_russian_rules_nav_bar_title">Translation Rules Russian</string>

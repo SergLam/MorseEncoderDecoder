@@ -42,6 +42,7 @@
     <string name="translation_list_german_title">Немецкий</string>
 
     <!-- Translation rules English activity -->
+    <string name="translation_rules_list_nav_bar_title">Правила перевода</string>
     <string name="translation_english_rules_nav_bar_title">Правила перевода Английский</string>
     <string name="translation_german_rules_nav_bar_title">Правила перевода Немецкий</string>
     <string name="translation_russian_rules_nav_bar_title">Правила перевода Русский</string>

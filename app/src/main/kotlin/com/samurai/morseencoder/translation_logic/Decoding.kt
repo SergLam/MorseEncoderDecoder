@@ -7,14 +7,14 @@ class Decoding {
 
     var translationCompleted = true
 
-    private val alpha_eng = arrayOf(
+    private val alphaEng = arrayOf(
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
         "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
         "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
         "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
         "=", "@", "+", ""
     )
-    private val dottie_eng = arrayOf(
+    private val dottieEng = arrayOf(
         ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
         ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".-*-*.",
         "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
@@ -24,14 +24,14 @@ class Decoding {
         "-*.*-*.*-*.", "-*.*.*-*.  ", ".*.*-*-*.*-", "-*-*-*.*.", "-*.*.*.*-", ".*-*-*.*-*.",
         ".*-*.*-*.", ""
     )
-    private val alpha_germ = arrayOf(
+    private val alphaGerm = arrayOf(
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
         "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
         "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
         "9", "0", " ", "'", ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
         "=", "@", "+", "ä", "ö", "ü", "ß", ""
     )
-    private val dottie_germ = arrayOf(
+    private val dottieGerm = arrayOf(
         ".*-", "-*.*.*.", "-*.*-*.", "-*.*.", ".", ".*.*-*.", "-*-*.",
         ".*.*.*.", ".*.", ".*-*-*-", "-*.*-", ".*-*.*.", "-*-", "-*.", "-*-*-", ".*-*-*.",
         "-*-*.*-", ".*-*.", ".*.*.", "-", ".*.*-", ".*.*.*-", ".*-*-", "-*.*.*-",
@@ -41,7 +41,7 @@ class Decoding {
         ".*.*-*-*.*.", "-*.*-*.*-*.", "-*.*.*-*.", ".*.*-*-*.*-", "-*-*-*.*.", "-*.*.*.*-",
         ".*-*-*.*-*.", ".*-*.*-*.", ".*-*.*-", "-*-*-*.", ".*.*-*-", ".*.*.*-*-*.*.", ""
     )
-    private val alpha_rus = arrayOf(
+    private val alphaRus = arrayOf(
         "а", "б", "в", "г", "д", "е", "ж", "з",
         "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т",
         "у", "ф", "х", "ц", "ш", "щ", "э", "ю", "я", "ь", "ы",
@@ -49,7 +49,7 @@ class Decoding {
         ":", ",", "-", "(", ".", "?", ";", "/", "-", ")",
         "=", "@", "+", ""
     )
-    private val dottie_rus = arrayOf(
+    private val dottieRus = arrayOf(
         ".*-",
         "-*.*.*.",
         ".*-*-",
@@ -110,77 +110,79 @@ class Decoding {
 
     //. . . -   . . .   - - .       . - - -   . . . -   . - . - .
     //.*.*.*-***.*.*.***-*-*.*******.*-*-*-***.*.*.*-***.*-*.*-*.
-    fun code_to_text(code: String, lang: LanguageCode): String {
+    fun codeToText(code: String, lang: LanguageCode): String {
         // Get language selected in settings
         val result = when (lang) {
-            LanguageCode.RUSSIAN -> morse_to_rus(code)
-            LanguageCode.GERMAN -> morse_to_germ(code)
-            LanguageCode.ENGLISH -> morse_to_eng(code)
+            LanguageCode.RUSSIAN -> morseToRus(code)
+            LanguageCode.GERMAN -> morseToGerm(code)
+            LanguageCode.ENGLISH -> morseToEng(code)
         }
         translationCompleted = true
         return result
     }
 
-    private fun morse_to_eng(code: String): String {
+    private fun morseToEng(code: String): String {
         var code = code
         var result = ""
-        var is_match = false
+        var isMatch = false
         code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(), MorseCharacters.COMMAS_WITH_SPACE.value)
         code = code.replace(MorseCharacters.LETTER_SPACING.value.toRegex(), MorseCharacters.COMMA.value)
         val code_split = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (j in code_split.indices) {
-            is_match = false
-            for (i in alpha_eng.indices) {
-                if (dottie_eng[i] == code_split[j]) {
-                    is_match = true
-                    result += alpha_eng[i]
+            isMatch = false
+            for (i in alphaEng.indices) {
+                if (dottieEng[i] == code_split[j]) {
+                    isMatch = true
+                    result += alphaEng[i]
                 }
             }
-            if (is_match == true) {
-            } else translationCompleted = false
+            if (!isMatch) {
+                translationCompleted = false
+            }
         }
         return result
     }
 
-    private fun morse_to_germ(code: String): String {
+    private fun morseToGerm(code: String): String {
         var code = code
         var result = ""
-        var is_match = false
+        var isMatch = false
         code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(), MorseCharacters.COMMAS_WITH_SPACE.value)
         code = code.replace(MorseCharacters.LETTER_SPACING.value.toRegex(), MorseCharacters.COMMA.value)
-        val code_split = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        for (j in code_split.indices) {
-            is_match = false
-            for (i in alpha_germ.indices) {
-                if (dottie_germ[i] == code_split[j]) {
-                    is_match = true
-                    result += alpha_germ[i]
+        val codeSplit = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        for (j in codeSplit.indices) {
+            isMatch = false
+            for (i in alphaGerm.indices) {
+                if (dottieGerm[i] == codeSplit[j]) {
+                    isMatch = true
+                    result += alphaGerm[i]
                 }
             }
-            if (is_match == true) {
-            } else translationCompleted = false
+            if (!isMatch) {
+                translationCompleted = false
+            }
         }
         return result
     }
 
-    private fun morse_to_rus(code: String): String {
+    private fun morseToRus(code: String): String {
         var code = code
         var result = ""
-        var is_match = false
+        var isMatch = false
         code = code.replace(MorseCharacters.WORDS_SPACING.value.toRegex(), MorseCharacters.COMMAS_WITH_SPACE.value)
         code = code.replace(MorseCharacters.LETTER_SPACING.value.toRegex(), MorseCharacters.COMMA.value)
-        val code_split = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        for (j in code_split.indices) {
-            is_match = false
-            for (i in alpha_rus.indices) {
-                if (dottie_rus[i] == code_split[j]) {
-                    is_match = true
-                    result += alpha_rus[i]
+        val codeSplit = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        for (j in codeSplit.indices) {
+            isMatch = false
+            for (i in alphaRus.indices) {
+                if (dottieRus[i] == codeSplit[j]) {
+                    isMatch = true
+                    result += alphaRus[i]
                 }
             }
-            if (is_match) {
-
-            } else translationCompleted = false
+            if (!isMatch) {
+                translationCompleted = false
+            }
         }
         return result
     }

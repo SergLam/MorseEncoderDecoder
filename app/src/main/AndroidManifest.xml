@@ -16,7 +16,7 @@
         <activity android:name="com.samurai.morseencoder.activities.main.MainActivity"
             android:exported="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,13 @@
         <activity
             android:name="com.samurai.morseencoder.activities.translation_rules.TranslationRulesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.samurai.morseencoder.activities.translation_rules_list.TranslationRulesListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>
