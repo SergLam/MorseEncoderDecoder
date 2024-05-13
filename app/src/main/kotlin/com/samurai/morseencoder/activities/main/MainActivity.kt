@@ -104,14 +104,14 @@ class MainActivity : AppCompatActivity() {
             val messageMorse: String = morseEditText.text.toString()
             when (mode) {
                 TranslationMode.ENCODE -> {
-                    val result = viewModel.encoding.translateToCode(message, language)
-                    if (viewModel.encoding.translationCompleted) {
+                    val result = viewModel.translateToCode(message)
+                    if (viewModel.translationCompleted) {
                         morseEditText.setText(result)
                     } else showErrorToast(R.string.mess_encode)
                 }
                 TranslationMode.DECODE -> {
-                    val result: String = viewModel.decoding.codeToText(messageMorse, language)
-                    if (viewModel.decoding.translationCompleted) {
+                    val result: String = viewModel.codeToText(messageMorse)
+                    if (viewModel.translationCompleted) {
                         languageInputEditText.setText(result)
                     } else showErrorToast(R.string.mess_decode)
                 }

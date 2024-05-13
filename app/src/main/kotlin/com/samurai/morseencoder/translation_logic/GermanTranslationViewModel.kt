@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.samurai.morseencoder.models.MorseCharacters
 import java.util.regex.Pattern
 
-class EnglishTranslationViewModel : ViewModel() {
+class GermanTranslationViewModel : ViewModel() {
 
-    private val englishAlphabet = arrayOf(
+    private val alphabetGerman = arrayOf(
         "a", "b", "c",
         "d", "e", "f",
         "g", "h", "i",
@@ -24,29 +24,32 @@ class EnglishTranslationViewModel : ViewModel() {
         ".", "?", ";",
         "/", "-", ")",
         "=", "@", "+",
-        ""
+        "ä", "ö", "ü",
+        "ß"
     )
-    private val englishMorseCodes = arrayOf(
+    private val germanMorseCodes = arrayOf(
         ".*-", "-*.*.*.", "-*.*-*.",
         "-*.*.", ".", ".*.*-*.",
         "-*-*.", ".*.*.*.", ".*.",
         ".*-*-*-", "-*.*-", ".*-*.*.",
         "-*-", "-*.", "-*-*-",
-        ".-*-*.", "-*-*.*-", ".*-*.",
+        ".*-*-*.", "-*-*.*-", ".*-*.",
         ".*.*.", "-", ".*.*-",
         ".*.*.*-", ".*-*-", "-*.*.*-",
         "-*.*-*-", "-*-*.*.", ".*-*-*-*-",
         ".*.*-*-*-", ".*.*.*-*-", ".*.*.*.*-",
         ".*.*.*.*.", "-*.*.*.*.", "-*-*.*.*.",
         "-*-*-*.*.", "-*-*-*-*.", "-*-*-*-*-",
-        " ", ".*-*-*-*-*.", "-*-*-*.*.*.",
+        "*******", ".*-*-*-*-*.", "-*-*-*.*.*.",
         "-*-*.*.*-*-", "-*.*.*.*.*-", "-*.*-*-*.*-",
         ".*-*.*-*.*-", ".*.*-*-*.*.", "-*.*-*.*-*.",
-        "-*.*.*-*.  ", ".*.*-*-*.*-", "-*-*-*.*.",
-        "-*.*.*.*-", ".*-*-*.*-*.", ".*-*.*-*.", ""
+        "-*.*.*-*.", ".*.*-*-*.*-", "-*-*-*.*.",
+        "-*.*.*.*-", ".*-*-*.*-*.", ".*-*.*-*.",
+        ".*-*.*-", "-*-*-*.", ".*.*-*-",
+        ".*.*.*-*-*.*."
     )
 
-    fun morseToEnglish(code: String): String {
+    fun morseToGerman(code: String): String {
         var code = code
         var result = ""
         var isMatch = false
@@ -55,10 +58,10 @@ class EnglishTranslationViewModel : ViewModel() {
         val codeSplit = code.split(MorseCharacters.COMMA.value.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (j in codeSplit.indices) {
             isMatch = false
-            for (i in englishAlphabet.indices) {
-                if (englishMorseCodes[i] == codeSplit[j]) {
+            for (i in alphabetGerman.indices) {
+                if (germanMorseCodes[i] == codeSplit[j]) {
                     isMatch = true
-                    result += englishMorseCodes[i]
+                    result += alphabetGerman[i]
                 }
             }
             if (!isMatch) {
@@ -68,31 +71,31 @@ class EnglishTranslationViewModel : ViewModel() {
         return result
     }
 
-    fun englishToMorse(translates: CharArray): String {
+    fun germanToMorse(translates: CharArray): String {
         var morse = ""
-        for (j in translates.indices) {
-            val a = translates[j]
+        for (characterIndex in translates.indices) {
+            val a = translates[characterIndex]
             val b = a.toString()
-            for (i in englishAlphabet.indices) {
-                if (j < translates.size - 1) {
-                    if (englishAlphabet[i] == b && translates[j + 1].toString() != MorseCharacters.SPACE.value) {
-                        morse += englishMorseCodes[i] + MorseCharacters.LETTER_SPACING.value
+            for (alphabetIndex in alphabetGerman.indices) {
+                if (characterIndex < translates.size - 1) {
+                    if (alphabetGerman[alphabetIndex] == b && translates[characterIndex + 1].toString() != MorseCharacters.SPACE.value) {
+                        morse += germanMorseCodes[alphabetIndex] + MorseCharacters.LETTER_SPACING.value
                     }
-                    if (englishAlphabet[i] == b && translates[j + 1].toString() == MorseCharacters.SPACE.value) {
-                        morse += englishMorseCodes[i]
+                    if (alphabetGerman[alphabetIndex] == b && translates[characterIndex + 1].toString() == MorseCharacters.SPACE.value) {
+                        morse += germanMorseCodes[alphabetIndex]
                     }
-                } else if (englishAlphabet[i] == b) {
-                    morse += englishMorseCodes[i]
+                } else if (alphabetGerman[alphabetIndex] == b) {
+                    morse += germanMorseCodes[alphabetIndex]
                 }
             }
         }
         return morse
     }
 
-    fun isEnglish(text: String): Boolean {
+    fun isGerman(text: String): Boolean {
         val pattern = Pattern.compile(
             "[" +  //начало списка допустимых символов
-                    "a-zA-Z" +
+                    "a-zA-ZäÄöÖüÜß" +
                     "\\d" +  //цифры
                     "\\s" +  //знаки-разделители (пробел, табуляция и т.д.)
                     "\\p{Punct}" +  //знаки пунктуации
